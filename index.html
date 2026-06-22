@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Technical Drawers - Engineering & Architecture Supplies</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome 6 (Free) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="container">
+        <div class="nav-wrapper">
+          <div class="nav-logo">
+            <a href="/">
+              <i class="fas fa-pencil-ruler logo-icon"></i>
+              <span class="logo-text"
+                >Technical<span class="logo-highlight">Drawers</span></span
+              >
+            </a>
+          </div>
+          <button
+            class="nav-toggle"
+            id="navToggle"
+            aria-label="Toggle navigation"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <ul class="nav-menu" id="navMenu">
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#articles">Guides</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#years">Year of Study</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li>
+              <a
+                href="https://wa.me/254700000000?text=Hello%20Technical%20Drawers%2C%20I%20need%20help%20finding%20the%20right%20equipment"
+                class="nav-whatsapp"
+                target="_blank"
+              > Make an Enquiry
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-overlay"></div>
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <div class="hero-badge">
+              <span
+                ><i class="fas fa-map-marker-alt"></i> Nairobi • Since
+                2018</span
+              >
+            </div>
+            <h1>
+              Tools for the<br />next generation of<br /><span
+                class="hero-highlight"
+                >engineers &amp; architects</span
+              >
+            </h1>
+            <p class="hero-text">
+              We've been in that drawing hall at 2am. We know the panic of a
+              broken compass. That's why we exist.
+            </p>
+            <div class="hero-buttons">
+              <a href="#years" class="btn btn-primary">Find Your Year</a>
+              <a
+                href="https://wa.me/254700000000?text=Hello%20Technical%20Drawers%2C%20I%20need%20advice%20on%20what%20to%20buy"
+                class="btn btn-whatsapp"
+                target="_blank"
+              > Make an Enquiry
+              </a>
+            </div>
+            <div class="hero-stats">
+              <div class="stat">
+                <span class="stat-number">5,000+</span>
+                <span class="stat-label">Students equipped</span>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat">
+                <span class="stat-number">2018</span>
+                <span class="stat-label">Year we started</span>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Genuine products</span>
+              </div>
+            </div>
+          </div>
+          <div class="hero-image">
+            <div class="hero-image-placeholder">
+              <i class="fas fa-drafting-compass"></i>
+              <p>Your technical<br />supply partner</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-content">
+            <span class="section-tag">About Us</span>
+            <h2>We're students too. Well, we used to be.</h2>
+            <p>
+              Technical Drawers started in 2018 when we realized engineering and
+              architecture students in Nairobi were struggling to find quality
+              equipment.
+            </p>
+            <p>
+              We've supplied over <strong>5,000 students</strong> and
+              professionals across Kenya. We know exactly what you need because
+              we've been in your seat.
+            </p>
+            <div class="about-values">
+              <div class="value-item">
+                <i class="fas fa-check-circle"></i>
+                <div>
+                  <strong>Genuine products</strong>
+                  <p>No counterfeits. Only trusted brands.</p>
+                </div>
+              </div>
+              <div class="value-item">
+                <i class="fas fa-coins"></i>
+                <div>
+                  <strong>Student-friendly pricing</strong>
+                  <p>We know your budget is tight. We keep prices fair.</p>
+                </div>
+              </div>
+              <div class="value-item">
+                <i class="fas fa-boxes"></i>
+                <div>
+                  <strong>Bulk &amp; institutional orders</strong>
+                  <p>We supply universities, colleges, and training centers.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="about-image">
+            <div class="about-image-placeholder">
+              <img
+                src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&h=400&fit=crop&crop=center"
+                alt="Technical Drawers shop interior"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Articles / Guides -->
+    <section class="articles" id="articles">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Guides</span>
+          <h2>Read before you buy</h2>
+          <p>Real advice from people who've been where you are</p>
+        </div>
+        <div class="article-grid">
+          <article class="article-card">
+            <div class="article-image"><i class="fas fa-calculator"></i></div>
+            <div class="article-content">
+              <span class="article-tag">Calculator Guide</span>
+              <h3>Which calculator should you buy?</h3>
+              <p>
+                FX-991ES vs FX-82ES vs FX-9860GII. What the lecturers actually
+                recommend.
+              </p>
+              <a href="article-calculator.html" class="article-link"
+                >Read guide <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </article>
+          <article class="article-card">
+            <div class="article-image">
+              <i class="fas fa-drafting-compass"></i>
+            </div>
+            <div class="article-content">
+              <span class="article-tag">Architecture</span>
+              <h3>First year architecture checklist</h3>
+              <p>
+                What you'll actually need for studio. From someone who survived
+                it.
+              </p>
+              <a href="article-architecture.html" class="article-link"
+                >Read guide <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </article>
+          <article class="article-card">
+            <div class="article-image"><i class="fas fa-user-md"></i></div>
+            <div class="article-content">
+              <span class="article-tag">Lab Safety</span>
+              <h3>Lab coat sizes explained</h3>
+              <p>
+                Don't look like you're wearing a tent. How to get the right fit.
+              </p>
+              <a href="article-labcoat.html" class="article-link"
+                >Read guide <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured" id="products">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Popular Tools</span>
+          <h2>What students are buying</h2>
+          <p>Trusted by students at KU, UoN, JKUAT, and TUK</p>
+        </div>
+        <div class="product-grid" id="productGrid">
+          <!-- Products will be loaded by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Year Selector Section -->
+    <section class="years" id="years">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Find Your Kit</span>
+          <h2>What year are you?</h2>
+          <p>
+            We'll show you exactly what you need for your semester. No
+            guesswork.
+          </p>
+        </div>
+        <div class="year-grid">
+          <a href="year-1.html" class="year-card year-1">
+            <div class="year-icon"><i class="fas fa-graduation-cap"></i></div>
+            <h3>1st Year</h3>
+            <p>Foundation tools you'll actually use</p>
+            <span class="year-arrow"><i class="fas fa-arrow-right"></i></span>
+          </a>
+          <a href="year-2.html" class="year-card year-2">
+            <div class="year-icon"><i class="fas fa-ruler-combined"></i></div>
+            <h3>2nd Year</h3>
+            <p>Core technical equipment</p>
+            <span class="year-arrow"><i class="fas fa-arrow-right"></i></span>
+          </a>
+          <a href="year-3.html" class="year-card year-3">
+            <div class="year-icon"><i class="fas fa-cogs"></i></div>
+            <h3>3rd Year</h3>
+            <p>Specialization gear</p>
+            <span class="year-arrow"><i class="fas fa-arrow-right"></i></span>
+          </a>
+          <a href="year-4.html" class="year-card year-4">
+            <div class="year-icon"><i class="fas fa-city"></i></div>
+            <h3>4th &amp; 5th Year</h3>
+            <p>Final year &amp; professional kit</p>
+            <span class="year-arrow"><i class="fas fa-arrow-right"></i></span>
+          </a>
+        </div>
+        <div class="year-cta">
+          <p>
+            Not sure what you need?
+            <a
+              href="https://wa.me/254700000000?text=Hello%20Technical%20Drawers%2C%20I'm%20not%20sure%20what%20I%20need%20for%20my%20year"
+              target="_blank"
+              >Ask us on WhatsApp <i class="fas fa-arrow-right"></i
+            ></a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Get in Touch</span>
+          <h2>We're actually helpful</h2>
+          <p>Have a question? Need advice on what to buy? Talk to us.</p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-cards">
+            <a href="tel:+254700000000" class="contact-card phone-card">
+              <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+              <div>
+                <h4>Phone Call</h4>
+                <p>For urgent inquiries or large orders.</p>
+                <span class="contact-action"
+                  >Call now <i class="fas fa-arrow-right"></i
+                ></span>
+              </div>
+            </a>
+            <a
+              href="mailto:info@technicaldrawers.co.ke"
+              class="contact-card email-card"
+            >
+              <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+              <div>
+                <h4>Email Us</h4>
+                <p>For detailed inquiries or bulk orders.</p>
+                <span class="contact-action"
+                  >Send email <i class="fas fa-arrow-right"></i
+                ></span>
+              </div>
+            </a>
+            <div class="contact-card location-card">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div>
+                <h4>Visit Our Shop</h4>
+                <p>Moi Avenue, Nairobi CBD</p>
+                <span class="contact-action"
+                  >Get directions <i class="fas fa-arrow-right"></i
+                ></span>
+              </div>
+            </div>
+          </div>
+          <div class="contact-form-wrapper">
+            <h3>Send us a message</h3>
+            <form id="contactForm" class="contact-form">
+              <div class="form-group">
+                <label for="contactName">Your Name</label>
+                <input
+                  type="text"
+                  id="contactName"
+                  placeholder="John Doe"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="contactEmail">Email Address</label>
+                <input
+                  type="email"
+                  id="contactEmail"
+                  placeholder="john@example.com"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="contactSubject">Subject</label>
+                <select id="contactSubject">
+                  <option value="">Select a subject...</option>
+                  <option value="product">Product Inquiry</option>
+                  <option value="bulk">Bulk Order</option>
+                  <option value="advice">Buying Advice</option>
+                  <option value="institution">
+                    Institution/University Order
+                  </option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="contactMessage">Message</label>
+                <textarea
+                  id="contactMessage"
+                  rows="5"
+                  placeholder="Tell us what you need..."
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-submit">
+                <i class="fas fa-paper-plane"></i> Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <i class="fas fa-pencil-ruler logo-icon"></i>
+            <span class="logo-text"
+              >Technical<span class="logo-highlight">Drawers</span></span
+            >
+            <p>
+              Equipping Kenya's next generation of engineers and architects
+              since 2018.
+            </p>
+            <div class="footer-social">
+              <a href="#" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" aria-label="Twitter"
+                ><i class="fab fa-twitter"></i
+              ></a>
+
+              <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            </div>
+          </div>
+          <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#articles">Guides</a></li>
+              <li><a href="#products">Products</a></li>
+              <li><a href="#years">Find Your Year</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h4>Contact Us</h4>
+            <ul>
+              <li>
+                <a href="#contact"
+                  ><i class="fas fa-map-marker-alt"></i> Moi Avenue, Nairobi</a
+                >
+              </li>
+              <li>
+                <a href="mailto:info@technicaldrawers.co.ke"
+                  ><i class="fas fa-envelope"></i> Email Us</a
+                >
+              </li>
+
+              <li>
+                <a href="tel:+254700000000"
+                  ><i class="fas fa-phone-alt"></i> Phone</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="footer-newsletter">
+            <h4>Stay in the loop</h4>
+            <p>We'll let you know when new stock arrives.</p>
+            <form id="newsletterForm" class="newsletter-form">
+              <input type="email" placeholder="Your email address" required />
+              <button type="submit"><i class="fas fa-paper-plane"></i></button>
+            </form>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 Technical Drawers. All rights reserved.</p>
+          <p>
+            Designed by NalediTechnologies.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a
+      href="https://wa.me/254700000000?text=Hello%20Technical%20Drawers%2C%20I%20have%20a%20question"
+      class="floating-whatsapp"
+      target="_blank"
+      aria-label="Chat on WhatsApp"
+    >
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
+  </body>
+</html>
