@@ -185,6 +185,31 @@ ${message}`;
     });
 }
 
+function initShowMore() {
+    const productGrid = document.getElementById('productGrid');
+    const articleGrid = document.querySelector('.article-grid');
+    const productBtn = document.getElementById('moreProductsBtn');
+    const articleBtn = document.getElementById('moreArticlesBtn');
+
+    if (productGrid && productBtn) {
+        productBtn.addEventListener('click', () => {
+            const expanded = productGrid.classList.toggle('expanded');
+            productGrid.classList.toggle('mobile-collapsed', !expanded);
+            productBtn.textContent = expanded ? 'Show less' : 'View more products';
+            productBtn.setAttribute('aria-expanded', expanded);
+        });
+    }
+
+    if (articleGrid && articleBtn) {
+        articleBtn.addEventListener('click', () => {
+            const expanded = articleGrid.classList.toggle('expanded');
+            articleGrid.classList.toggle('mobile-collapsed', !expanded);
+            articleBtn.textContent = expanded ? 'Show less' : 'See more guides';
+            articleBtn.setAttribute('aria-expanded', expanded);
+        });
+    }
+}
+
 // ============================================
 // SMOOTH SCROLL FOR NAV LINKS
 // ============================================
@@ -224,6 +249,11 @@ function initYearPage() {
     const header = document.querySelector('.year-hero h1');
     if (header) {
         header.textContent = `${yearNames[year - 1]} Year Kit`;
+    }
+
+    const badge = document.querySelector('.year-hero .hero-badge');
+    if (badge) {
+        badge.textContent = `🎓 ${yearNames[year - 1]} Year`;
     }
 
     const desc = document.querySelector('.year-hero p');
@@ -275,6 +305,23 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileNav();
     initNewsletter();
     initContactForm();
+    initShowMore();
     initSmoothScroll();
     initYearPage();
+});
+
+
+
+const lines = document.querySelectorAll('.title-line');
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+        }
+    });
+});
+
+lines.forEach(line => {
+    observer.observe(line);
 });

@@ -25,35 +25,26 @@
           <div class="nav-logo">
             <a href="/">
               <i class="fas fa-pencil-ruler logo-icon"></i>
-              <span class="logo-text"
-                >Technical<span class="logo-highlight">Drawers</span></span
-              >
+              <span class="logo-text">Technical<span class="logo-highlight">Drawers</span></span>
             </a>
           </div>
-          <button
-            class="nav-toggle"
-            id="navToggle"
-            aria-label="Toggle navigation"
-          >
+          <div class="nav-whatsapp-wrapper">
+            <a href="https://wa.me/254700000000?text=Hello%20Technical%20Drawers%2C%20I%20need%20help%20finding%20the%20right%20equipment" class="nav-whatsapp" target="_blank">
+              <i class="fab fa-whatsapp"></i> Make an Enquiry
+            </a>
+          </div>
+          <ul class="nav-menu" id="navMenu">
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#articles">Guides</a></li>
+            <li><a href="#products">Featured Products</a></li>
+            <li><a href="#years">Year of Study</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
+          <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
             <span></span>
             <span></span>
             <span></span>
           </button>
-          <ul class="nav-menu" id="navMenu">
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#articles">Guides</a></li>
-            <li><a href="#products">Products</a></li>
-            <li><a href="#years">Year of Study</a></li>
-            <li><a href="#contact">Contact Us</a></li>
-            <li>
-              <a
-                href="https://wa.me/254700000000?text=Hello%20Technical%20Drawers%2C%20I%20need%20help%20finding%20the%20right%20equipment"
-                class="nav-whatsapp"
-                target="_blank"
-              > Make an Enquiry
-              </a>
-            </li>
-          </ul>
         </div>
       </div>
     </nav>
@@ -65,13 +56,13 @@
         <div class="hero-grid">
           <div class="hero-content">
             <div class="hero-badge">
-              <span
+              <!-- <span
                 ><i class="fas fa-map-marker-alt"></i> Nairobi • Since
                 2018</span
-              >
+              > -->
             </div>
             <h1>
-              Tools for the<br />next generation of<br /><span
+              Essentials for the<br />next generation of<br /><span
                 class="hero-highlight"
                 >engineers &amp; architects</span
               >
@@ -86,18 +77,19 @@
                 href="https://wa.me/254700000000?text=Hello%20Technical%20Drawers%2C%20I%20need%20advice%20on%20what%20to%20buy"
                 class="btn btn-whatsapp"
                 target="_blank"
-              > Make an Enquiry
+              >
+                Make an Enquiry
               </a>
             </div>
             <div class="hero-stats">
               <div class="stat">
                 <span class="stat-number">5,000+</span>
-                <span class="stat-label">Students equipped</span>
+                <span class="stat-label">Bulk & institutional orders</span>
               </div>
               <div class="stat-divider"></div>
               <div class="stat">
                 <span class="stat-number">2018</span>
-                <span class="stat-label">Year we started</span>
+                <span class="stat-label">Student-friendly pricing</span>
               </div>
               <div class="stat-divider"></div>
               <div class="stat">
@@ -119,9 +111,12 @@
     <!-- About Section -->
     <section class="about" id="about">
       <div class="container">
+        <div class="title-wrapper">
+          <h2 class="section-title">About Us</h2>
+          <div class="title-line"></div>
+        </div>
         <div class="about-grid">
           <div class="about-content">
-            <span class="section-tag">About Us</span>
             <h2>We're students too. Well, we used to be.</h2>
             <p>
               Technical Drawers started in 2018 when we realized engineering and
@@ -173,11 +168,14 @@
     <section class="articles" id="articles">
       <div class="container">
         <div class="section-header">
-          <span class="section-tag">Guides</span>
+          <div class="title-wrapper">
+            <h2 class="section-title">Articles & Guides</h2>
+            <div class="title-line"></div>
+          </div>
           <h2>Read before you buy</h2>
           <p>Real advice from people who've been where you are</p>
         </div>
-        <div class="article-grid">
+        <div class="article-grid mobile-collapsed">
           <article class="article-card">
             <div class="article-image"><i class="fas fa-calculator"></i></div>
             <div class="article-content">
@@ -221,6 +219,51 @@
               ></a>
             </div>
           </article>
+          <article class="article-card">
+            <div class="article-image"><i class="fas fa-ruler-combined"></i></div>
+            <div class="article-content">
+              <span class="article-tag">Engineering</span>
+              <h3>Which drawing board should you buy?</h3>
+              <p>
+                A guide to choosing the right drawing board for your engineering
+                projects.
+              </p>
+              <a href="article-drawingboard.html" class="article-link"
+                >Read guide <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </article>
+          <article class="article-card">
+            <div class="article-image"><i class="fas fa-pencil-ruler"></i></div>
+            <div class="article-content">
+              <span class="article-tag">Drawing Tools</span>
+              <h3>How to choose a drawing kit</h3>
+              <p>
+                Don't waste money on a kit you'll never use. Here's what you
+                actually need.
+              </p>
+              <a href="article-drawingkit.html" class="article-link"
+                >Read guide <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </article>
+          <article class="article-card">
+            <div class="article-image"><i class="fas fa-ruler"></i></div>
+            <div class="article-content">
+              <span class="article-tag">Technical drawing set</span>
+              <h3>How to choose a scale ruler</h3>
+              <p>
+                Don't waste money on a ruler you'll never use. Here's what you
+                actually need.
+              </p>
+              <a href="article-drawingset.html" class="article-link"
+                >Read guide <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </article>
+        </div>
+        <div class="show-more-wrapper mobile-only">
+          <button id="moreArticlesBtn" class="show-more-btn" aria-expanded="false">See more guides</button>
         </div>
       </div>
     </section>
@@ -229,12 +272,18 @@
     <section class="featured" id="products">
       <div class="container">
         <div class="section-header">
-          <span class="section-tag">Popular Tools</span>
+          <div class="title-wrapper">
+            <h2 class="section-title">Featured Products</h2>
+            <div class="title-line"></div>
+          </div>
           <h2>What students are buying</h2>
           <p>Trusted by students at KU, UoN, JKUAT, and TUK</p>
         </div>
-        <div class="product-grid" id="productGrid">
+        <div class="product-grid mobile-collapsed" id="productGrid">
           <!-- Products will be loaded by JavaScript -->
+        </div>
+        <div class="show-more-wrapper mobile-only">
+          <button id="moreProductsBtn" class="show-more-btn" aria-expanded="false">View more products</button>
         </div>
       </div>
     </section>
@@ -243,7 +292,10 @@
     <section class="years" id="years">
       <div class="container">
         <div class="section-header">
-          <span class="section-tag">Find Your Kit</span>
+          <div class="title-wrapper">
+            <h2 class="section-title">Find Your Kit</h2>
+            <div class="title-line"></div>
+          </div>
           <h2>What year are you?</h2>
           <p>
             We'll show you exactly what you need for your semester. No
@@ -293,7 +345,10 @@
     <section class="contact" id="contact">
       <div class="container">
         <div class="section-header">
-          <span class="section-tag">Get in Touch</span>
+          <div class="title-wrapper">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="title-line"></div>
+          </div>
           <h2>We're actually helpful</h2>
           <p>Have a question? Need advice on what to buy? Talk to us.</p>
         </div>
@@ -328,7 +383,7 @@
               </div>
               <div>
                 <h4>Visit Our Shop</h4>
-                <p>Moi Avenue, Nairobi CBD</p>
+                <p>Haile Selassie Avenue, Nairobi CBD</p>
                 <span class="contact-action"
                   >Get directions <i class="fas fa-arrow-right"></i
                 ></span>
@@ -356,7 +411,6 @@
                   required
                 />
               </div>
-
               <div class="form-group">
                 <label for="contactSubject">Subject</label>
                 <select id="contactSubject">
@@ -411,7 +465,6 @@
               <a href="#" aria-label="Twitter"
                 ><i class="fab fa-twitter"></i
               ></a>
-
               <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
             </div>
           </div>
@@ -429,7 +482,8 @@
             <ul>
               <li>
                 <a href="#contact"
-                  ><i class="fas fa-map-marker-alt"></i> Moi Avenue, Nairobi</a
+                  ><i class="fas fa-map-marker-alt"></i> Haile Selassie Avenue,
+                  Nairobi</a
                 >
               </li>
               <li>
@@ -437,7 +491,6 @@
                   ><i class="fas fa-envelope"></i> Email Us</a
                 >
               </li>
-
               <li>
                 <a href="tel:+254700000000"
                   ><i class="fas fa-phone-alt"></i> Phone</a
@@ -456,9 +509,10 @@
         </div>
         <div class="footer-bottom">
           <p>&copy; 2026 Technical Drawers. All rights reserved.</p>
-          <p>
-            Designed by NalediTechnologies.
-          </p>
+          <div class="footer-legal">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms-conditions.html">Terms & Conditions</a>
+          </div>
         </div>
       </div>
     </footer>
