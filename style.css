@@ -294,7 +294,7 @@ img {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(74, 48, 109, 0.85) 50%, rgba(161, 103, 165, 0.7) 100%);
+    background: linear-gradient(135deg, rgba(50, 36, 69, 0.85) 50%, rgba(161, 103, 165, 0.7) 100%);
 }
 
 .hero .container {
@@ -384,28 +384,57 @@ img {
     width: 100%;
     max-width: 440px;
     aspect-ratio: 1;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-radius: var(--radius-lg);
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: var(--white);
-    text-align: center;
     border: 2px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    transition: var(--transition);
+    overflow: hidden;
 }
 
-.hero-image-placeholder i {
-    font-size: 5rem;
-    margin-bottom: 16px;
-    color: var(--lavender-veil);
+.hero-image-placeholder:hover {
+    transform: scale(1.02);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
 }
 
-.hero-image-placeholder p {
-    font-size: 1.25rem;
-    opacity: 0.9;
-    line-height: 1.4;
+.hero-image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    filter: brightness(1.1) drop-shadow(0 4px 16px rgba(0, 0, 0, 0.15));
+    transition: var(--transition);
+}
+
+.hero-image-placeholder:hover img {
+    transform: scale(1.05);
+    filter: brightness(1.2) drop-shadow(0 6px 24px rgba(0, 0, 0, 0.2));
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-image-placeholder {
+        max-width: 320px;
+        padding: 16px;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-image-placeholder {
+        max-width: 260px;
+        padding: 12px;
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+    }
 }
 
 /* Article & Year Hero Pages */
