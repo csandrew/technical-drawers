@@ -239,11 +239,6 @@ img {
     font-size: 0.95rem;
     box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
     transition: var(--transition);
-    margin-left: auto;
-}
-
-.mobile-only {
-    display: none;
 }
 
 .nav-whatsapp:hover {
@@ -255,6 +250,10 @@ img {
 
 .nav-whatsapp i {
     font-size: 1.1rem;
+}
+
+.nav-whatsapp-item {
+    display: none;
 }
 
 /* Mobile Nav Toggle */
@@ -1111,45 +1110,6 @@ img {
     color: var(--white);
 }
 
-.show-more-wrapper {
-    text-align: center;
-    margin-top: 24px;
-    display: none;
-}
-
-.show-more-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 12px 24px;
-    border-radius: 999px;
-    border: 1px solid rgba(14, 39, 60, 0.12);
-    background: transparent;
-    color: var(--deep-space-blue);
-    font-weight: 600;
-    transition: var(--transition);
-    cursor: pointer;
-}
-
-.show-more-btn:hover {
-    background: rgba(161, 103, 165, 0.12);
-}
-
-@media (max-width: 768px) {
-    .show-more-wrapper {
-        display: block;
-    }
-
-    .product-grid.mobile-collapsed .product-card:nth-child(n+5) {
-        display: none;
-    }
-
-    .article-grid.mobile-collapsed .article-card:nth-child(n+3) {
-        display: none;
-    }
-}
-
 /* ============================================
    FLOATING WHATSAPP BUTTON
    ============================================ */
@@ -1178,6 +1138,37 @@ img {
 }
 
 /* ============================================
+   SHOW MORE / SHOW LESS (Mobile)
+   ============================================ */
+.show-more-wrapper {
+    text-align: center;
+    margin-top: 24px;
+    display: none;
+}
+
+.show-more-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 999px;
+    border: 1px solid rgba(14, 39, 60, 0.12);
+    background: transparent;
+    color: var(--deep-space-blue);
+    font-weight: 600;
+    transition: var(--transition);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.95rem;
+}
+
+.show-more-btn:hover {
+    background: rgba(161, 103, 165, 0.12);
+    border-color: var(--vintage-lavender);
+}
+
+/* ============================================
    RESPONSIVE DESIGN
    ============================================ */
 @media (max-width: 1024px) {
@@ -1195,6 +1186,19 @@ img {
 }
 
 @media (max-width: 768px) {
+    /* Show More */
+    .show-more-wrapper {
+        display: block;
+    }
+
+    .product-grid.mobile-collapsed .product-card:nth-child(n+5) {
+        display: none;
+    }
+
+    .article-grid.mobile-collapsed .article-card:nth-child(n+4) {
+        display: none;
+    }
+
     /* Navigation */
     .nav-toggle {
         display: flex;
@@ -1232,20 +1236,7 @@ img {
     }
 
     .nav-whatsapp-wrapper {
-        order: 5;
-        margin-left: 0;
-        width: 100%;
-        flex-basis: 100%;
         display: none;
-    }
-
-    .nav-menu .nav-whatsapp {
-        width: 100%;
-        justify-content: center;
-    }
-
-    .mobile-only {
-        display: block;
     }
 
     /* Hero */

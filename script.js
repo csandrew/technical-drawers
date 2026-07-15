@@ -185,28 +185,68 @@ ${message}`;
     });
 }
 
+// ============================================
+// SHOW MORE / SHOW LESS BUTTONS
+// ============================================
 function initShowMore() {
     const productGrid = document.getElementById('productGrid');
     const articleGrid = document.querySelector('.article-grid');
     const productBtn = document.getElementById('moreProductsBtn');
     const articleBtn = document.getElementById('moreArticlesBtn');
 
+    // Products "See More"
     if (productGrid && productBtn) {
-        productBtn.addEventListener('click', () => {
-            const expanded = productGrid.classList.toggle('expanded');
-            productGrid.classList.toggle('mobile-collapsed', !expanded);
-            productBtn.textContent = expanded ? 'Show less' : 'View more products';
-            productBtn.setAttribute('aria-expanded', expanded);
-        });
+        // Check if there are more than 4 products
+        const productCards = productGrid.querySelectorAll('.product-card');
+        if (productCards.length <= 4) {
+            productBtn.style.display = 'none';
+        } else {
+            // Initially hide products beyond the first 4
+            productCards.forEach((card, index) => {
+                if (index >= 4) {
+                    card.style.display = 'none';
+                }
+            });
+
+            let expanded = false;
+            productBtn.addEventListener('click', () => {
+                expanded = !expanded;
+                productCards.forEach((card, index) => {
+                    if (index >= 4) {
+                        card.style.display = expanded ? 'block' : 'none';
+                    }
+                });
+                productBtn.textContent = expanded ? 'Show less' : 'View more products';
+                productBtn.setAttribute('aria-expanded', expanded);
+            });
+        }
     }
 
+    // Articles "See More"
     if (articleGrid && articleBtn) {
-        articleBtn.addEventListener('click', () => {
-            const expanded = articleGrid.classList.toggle('expanded');
-            articleGrid.classList.toggle('mobile-collapsed', !expanded);
-            articleBtn.textContent = expanded ? 'Show less' : 'See more guides';
-            articleBtn.setAttribute('aria-expanded', expanded);
-        });
+        const articleCards = articleGrid.querySelectorAll('.article-card');
+        if (articleCards.length <= 3) {
+            articleBtn.style.display = 'none';
+        } else {
+            // Initially hide articles beyond the first 3
+            articleCards.forEach((card, index) => {
+                if (index >= 3) {
+                    card.style.display = 'none';
+                }
+            });
+
+            let expanded = false;
+            articleBtn.addEventListener('click', () => {
+                expanded = !expanded;
+                articleCards.forEach((card, index) => {
+                    if (index >= 3) {
+                        card.style.display = expanded ? 'block' : 'none';
+                    }
+                });
+                articleBtn.textContent = expanded ? 'Show less' : 'See more guides';
+                articleBtn.setAttribute('aria-expanded', expanded);
+            });
+        }
     }
 }
 
@@ -253,7 +293,7 @@ function initYearPage() {
 
     const badge = document.querySelector('.year-hero .hero-badge');
     if (badge) {
-        badge.textContent = `🎓 ${yearNames[year - 1]} Year`;
+        badge.innerHTML = `<i class="fas fa-graduation-cap"></i> ${yearNames[year - 1]} Year`;
     }
 
     const desc = document.querySelector('.year-hero p');
@@ -298,6 +338,44 @@ function initYearPage() {
 }
 
 // ============================================
+// TITLE LINE ANIMATION
+// ============================================
+function initTitleLine() {
+    const lines = document.querySelectorAll('.title-line');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.3 });
+
+    lines.forEach(line => {
+        observer.observe(line);
+    });
+}
+
+// ============================================
+// ACTIVE NAV LINK
+// ============================================
+function initActiveNav() {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const navLinks = document.querySelectorAll('.nav-menu a');
+
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPage) {
+            link.classList.add('active');
+        } else if (currentPage === 'index.html' && href === 'index.html') {
+            link.classList.add('active');
+        } else if (href && href.includes('#') && currentPage === 'index.html') {
+            // Don't mark anchor links as active on other pages
+        }
+    });
+}
+
+// ============================================
 // INITIALIZE EVERYTHING
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -308,20 +386,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initShowMore();
     initSmoothScroll();
     initYearPage();
-});
-
-
-
-const lines = document.querySelectorAll('.title-line');
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-        }
-    });
-});
-
-lines.forEach(line => {
-    observer.observe(line);
+    initTitleLine();
+    initActiveNav();
 });
