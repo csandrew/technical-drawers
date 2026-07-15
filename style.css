@@ -385,7 +385,7 @@ img {
 .hero-image-placeholder img {
     width: 100%;
     height: 100%;
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     object-fit: contain;
     display: block;
     filter: brightness(1.1) drop-shadow(0 4px 16px rgba(0, 0, 0, 0.15));
@@ -496,7 +496,10 @@ img {
 }
 
 .article-tag {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     font-size: 0.7rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -522,7 +525,7 @@ img {
 }
 
 .article-link {
-     display: inline-flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
@@ -868,17 +871,37 @@ img {
     transform: translateX(4px);
 }
 
-.whatsapp-card:hover { border-color: var(--whatsapp); }
-.whatsapp-card:hover .contact-action { color: var(--whatsapp); }
+.whatsapp-card:hover {
+    border-color: var(--whatsapp);
+}
 
-.phone-card:hover { border-color: var(--deep-space-blue); }
-.phone-card:hover .contact-action { color: var(--deep-space-blue); }
+.whatsapp-card:hover .contact-action {
+    color: var(--whatsapp);
+}
 
-.email-card:hover { border-color: var(--email); }
-.email-card:hover .contact-action { color: var(--email); }
+.phone-card:hover {
+    border-color: var(--deep-space-blue);
+}
 
-.location-card:hover { border-color: var(--vintage-lavender); }
-.location-card:hover .contact-action { color: var(--vintage-lavender); }
+.phone-card:hover .contact-action {
+    color: var(--deep-space-blue);
+}
+
+.email-card:hover {
+    border-color: var(--email);
+}
+
+.email-card:hover .contact-action {
+    color: var(--email);
+}
+
+.location-card:hover {
+    border-color: var(--vintage-lavender);
+}
+
+.location-card:hover .contact-action {
+    color: var(--vintage-lavender);
+}
 
 /* Contact Form */
 .contact-form-wrapper {
@@ -1001,11 +1024,25 @@ img {
     color: var(--white);
 }
 
-.footer-social a:hover .fa-instagram { color: var(--instagram); }
-.footer-social a:hover .fa-facebook-f { color: var(--facebook); }
-.footer-social a:hover .fa-twitter { color: var(--twitter); }
-.footer-social a:hover .fa-youtube { color: var(--youtube); }
-.footer-social a:hover .fa-tiktok { color: var(--white); }
+.footer-social a:hover .fa-instagram {
+    color: var(--instagram);
+}
+
+.footer-social a:hover .fa-facebook-f {
+    color: var(--facebook);
+}
+
+.footer-social a:hover .fa-twitter {
+    color: var(--twitter);
+}
+
+.footer-social a:hover .fa-youtube {
+    color: var(--youtube);
+}
+
+.footer-social a:hover .fa-tiktok {
+    color: var(--white);
+}
 
 .footer-links h4 {
     color: var(--white);
@@ -1185,6 +1222,7 @@ img {
 }
 
 @media (max-width: 768px) {
+
     /* Show More */
     .show-more-wrapper {
         display: block;
