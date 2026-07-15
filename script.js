@@ -194,60 +194,60 @@ function initShowMore() {
     const productBtn = document.getElementById('moreProductsBtn');
     const articleBtn = document.getElementById('moreArticlesBtn');
 
-    // Products "See More"
-    if (productGrid && productBtn) {
-        // Check if there are more than 4 products
-        const productCards = productGrid.querySelectorAll('.product-card');
-        if (productCards.length <= 4) {
-            productBtn.style.display = 'none';
-        } else {
-            // Initially hide products beyond the first 4
-            productCards.forEach((card, index) => {
-                if (index >= 4) {
-                    card.style.display = 'none';
-                }
-            });
+    const mobileQuery = window.matchMedia('(max-width: 768px)');
 
-            let expanded = false;
-            productBtn.addEventListener('click', () => {
-                expanded = !expanded;
-                productCards.forEach((card, index) => {
-                    if (index >= 4) {
-                        card.style.display = expanded ? 'block' : 'none';
-                    }
-                });
+    function updateShowMoreState() {
+        const isMobile = mobileQuery.matches;
+
+        if (productGrid && productBtn) {
+            const productCards = productGrid.querySelectorAll('.product-card');
+            if (productCards.length <= 4 || !isMobile) {
+                productGrid.classList.remove('expanded');
+                productBtn.style.display = 'none';
+                productBtn.setAttribute('aria-expanded', false);
+            } else {
+                productBtn.style.display = 'inline-flex';
+                const expanded = productGrid.classList.contains('expanded');
                 productBtn.textContent = expanded ? 'Show less' : 'View more products';
                 productBtn.setAttribute('aria-expanded', expanded);
-            });
+            }
         }
-    }
 
-    // Articles "See More"
-    if (articleGrid && articleBtn) {
-        const articleCards = articleGrid.querySelectorAll('.article-card');
-        if (articleCards.length <= 3) {
-            articleBtn.style.display = 'none';
-        } else {
-            // Initially hide articles beyond the first 3
-            articleCards.forEach((card, index) => {
-                if (index >= 3) {
-                    card.style.display = 'none';
-                }
-            });
-
-            let expanded = false;
-            articleBtn.addEventListener('click', () => {
-                expanded = !expanded;
-                articleCards.forEach((card, index) => {
-                    if (index >= 3) {
-                        card.style.display = expanded ? 'block' : 'none';
-                    }
-                });
+        if (articleGrid && articleBtn) {
+            const articleCards = articleGrid.querySelectorAll('.article-card');
+            if (articleCards.length <= 3 || !isMobile) {
+                articleGrid.classList.remove('expanded');
+                articleBtn.style.display = 'none';
+                articleBtn.setAttribute('aria-expanded', false);
+            } else {
+                articleBtn.style.display = 'inline-flex';
+                const expanded = articleGrid.classList.contains('expanded');
                 articleBtn.textContent = expanded ? 'Show less' : 'See more guides';
                 articleBtn.setAttribute('aria-expanded', expanded);
-            });
+            }
         }
     }
+
+    if (productBtn && productGrid) {
+        productBtn.addEventListener('click', () => {
+            productGrid.classList.toggle('expanded');
+            const expanded = productGrid.classList.contains('expanded');
+            productBtn.textContent = expanded ? 'Show less' : 'View more products';
+            productBtn.setAttribute('aria-expanded', expanded);
+        });
+    }
+
+    if (articleBtn && articleGrid) {
+        articleBtn.addEventListener('click', () => {
+            articleGrid.classList.toggle('expanded');
+            const expanded = articleGrid.classList.contains('expanded');
+            articleBtn.textContent = expanded ? 'Show less' : 'See more guides';
+            articleBtn.setAttribute('aria-expanded', expanded);
+        });
+    }
+
+    mobileQuery.addEventListener('change', updateShowMoreState);
+    updateShowMoreState();
 }
 
 // ============================================
