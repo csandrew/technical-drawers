@@ -242,6 +242,10 @@ img {
     margin-left: auto;
 }
 
+.mobile-only {
+    display: none;
+}
+
 .nav-whatsapp:hover {
     background: #1da851;
     color: var(--white) !important;
@@ -1228,15 +1232,20 @@ img {
     }
 
     .nav-whatsapp-wrapper {
-        order: 3;
+        order: 5;
         margin-left: 0;
         width: 100%;
         flex-basis: 100%;
+        display: none;
     }
 
-    .nav-whatsapp {
+    .nav-menu .nav-whatsapp {
         width: 100%;
         justify-content: center;
+    }
+
+    .mobile-only {
+        display: block;
     }
 
     /* Hero */
