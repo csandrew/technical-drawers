@@ -1,9 +1,8 @@
-
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { CartProvider } from './context/CartContext';
-import Header from './components/Header';
+import Header from './components/Header';  // ← Changed from Navbar
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
 import Home from './pages/Home';
@@ -14,6 +13,8 @@ import Checkout from './pages/Checkout';
 import OrderConfirmation from './pages/OrderConfirmation';
 import About from './pages/About';
 import Contact from './pages/Contact';
+
+// Blog Components
 import BlogIndex from './pages/blog';
 import CalculatorGuide from './pages/blog/CalculatorGuide';
 import DrawingKitGuide from './pages/blog/DrawingKitGuide';
@@ -26,14 +27,9 @@ import UrbanPlanning from './pages/blog/UrbanPlanning';
 function App() {
     return (
         <CartProvider>
-            <Router
-                future={{
-                    v7_startTransition: true,
-                    v7_relativeSplatPath: true,
-                }}
-            >
-                <Header />
-                <main className="pt-0">
+            <Router>
+                <Header />  {/* ← Changed from Navbar */}
+                <main>
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/products" element={<Products />} />
@@ -42,7 +38,8 @@ function App() {
                         <Route path="/checkout" element={<Checkout />} />
                         <Route path="/order-confirmation" element={<OrderConfirmation />} />
                         <Route path="/about" element={<About />} />
-                        <Route path="/contact" element={<Contact />} />                    
+                        <Route path="/contact" element={<Contact />} />
+                        
                         {/* Blog Routes */}
                         <Route path="/blog" element={<BlogIndex />} />
                         <Route path="/blog/calculator-guide" element={<CalculatorGuide />} />

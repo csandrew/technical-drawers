@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import axios from 'axios';
 import toast from 'react-hot-toast';
@@ -33,11 +33,9 @@ const Checkout = () => {
         setLoading(true);
 
         try {
-            // Get token from localStorage (if user is logged in)
             const token = localStorage.getItem('token');
             const headers = token ? { Authorization: `Bearer ${token}` } : {};
 
-            // Create order
             const orderData = {
                 items: cart.map(item => ({
                     productId: item._id,
@@ -64,6 +62,15 @@ const Checkout = () => {
             const orderResponse = await axios.post('/api/orders', orderData, { headers });
             const order = orderResponse.data;
 
+            // If Cash on Delivery, skip M-Pesa
+            if (formData.paymentMethod === 'cash') {
+                toast.success('Order placed! We\'ll deliver and collect payment.');
+                clearCart();
+                navigate('/order-confirmation', { state: { orderId: order._id } });
+                setLoading(false);
+                return;
+            }
+
             // Initiate M-Pesa payment
             const paymentResponse = await axios.post(
                 '/api/mpesa/stk-push',
@@ -78,7 +85,6 @@ const Checkout = () => {
             if (paymentResponse.data.success) {
                 toast.success('M-Pesa STK Push sent! Check your phone.');
                 
-                // Poll for payment status
                 const pollInterval = setInterval(async () => {
                     try {
                         const statusResponse = await axios.get(
@@ -101,7 +107,6 @@ const Checkout = () => {
                     }
                 }, 3000);
 
-                // Stop polling after 2 minutes
                 setTimeout(() => {
                     clearInterval(pollInterval);
                     if (loading) {
@@ -129,6 +134,13 @@ const Checkout = () => {
             </section>
         );
     }
+
+    // Dynamic button text based on payment method
+    const getButtonText = () => {
+        if (loading) return 'Processing...';
+        if (formData.paymentMethod === 'cash') return `Place Order — KES ${total.toLocaleString()}`;
+        return `Pay KES ${total.toLocaleString()} via M-Pesa`;
+    };
 
     return (
         <section className="py-12">
@@ -161,7 +173,7 @@ const Checkout = () => {
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm">Phone Number (for M-Pesa)</label>
+                                <label className="block text-sm">Phone Number {formData.paymentMethod === 'mpesa' ? '(for M-Pesa)' : ''}</label>
                                 <input
                                     type="tel"
                                     name="phone"
@@ -204,8 +216,12 @@ const Checkout = () => {
                             </select>
                         </div>
 
-                        <button type="submit" className="mt-6 bg-primary text-white px-4 py-2 rounded disabled:opacity-50" disabled={loading}>
-                            {loading ? 'Processing...' : `Pay KES ${total.toLocaleString()}`}
+                        <button
+                            type="submit"
+                            className="mt-6 bg-primary text-white px-6 py-3 rounded disabled:opacity-50 w-full font-semibold"
+                            disabled={loading}
+                        >
+                            {getButtonText()}
                         </button>
                     </form>
 
@@ -224,6 +240,9 @@ const Checkout = () => {
                             <span>Total</span>
                             <span>KES {total.toLocaleString()}</span>
                         </div>
+                        <p className="text-xs text-gray-500 mt-2">
+                            {formData.paymentMethod === 'mpesa' ? 'You will receive an M-Pesa STK Push' : 'Pay cash on delivery'}
+                        </p>
                     </div>
                 </div>
             </div>

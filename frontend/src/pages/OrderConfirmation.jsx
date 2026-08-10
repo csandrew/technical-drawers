@@ -80,7 +80,14 @@ const OrderConfirmation = () => {
 
                     <div className="mt-6 flex items-center justify-center gap-3">
                         <Link to="/" className="bg-primary text-white px-4 py-2 rounded">Continue Shopping</Link>
-                        <a href={`https://wa.me/254700000000?text=Hello%20Technical%20Drawers%2C%20I've%20just%20placed%20order%20${order._id.slice(-6).toUpperCase()}`} className="bg-golden text-primary px-4 py-2 rounded flex items-center hover:bg-golden-hover" target="_blank" rel="noopener noreferrer"><i className="fab fa-whatsapp mr-2"></i> Contact Support</a>
+                        <a 
+                            href={`https://wa.me/254795011225?text=Hello%20Technical%20Drawers%2C%20I've%20just%20placed%20order%20${order._id.slice(-6).toUpperCase()}`} 
+                            className="bg-golden text-primary px-4 py-2 rounded flex items-center hover:bg-golden-hover" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                        >
+                            <i className="fab fa-whatsapp mr-2"></i> Contact Support
+                        </a>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
@@ -34,18 +33,40 @@ const CartPage = () => {
                                 </div>
                                 <div className="flex items-center gap-3">
                                     <div className="inline-flex items-center border rounded">
-                                        <button onClick={() => updateQuantity(item._id, item.quantity - 1)} className="px-3 py-1">-</button>
-                                        <span className="px-3">{item.quantity}</span>
-                                        <button onClick={() => updateQuantity(item._id, item.quantity + 1)} className="px-3 py-1">+</button>
+                                        <button
+                                            onClick={() => updateQuantity(item._id, item.quantity - 1)}
+                                            className="px-3 py-1 hover:bg-gray-100"
+                                            aria-label={`Decrease quantity of ${item.name}`}
+                                        >
+                                            -
+                                        </button>
+                                        <span className="px-3" aria-label={`Quantity: ${item.quantity}`}>{item.quantity}</span>
+                                        <button
+                                            onClick={() => updateQuantity(item._id, item.quantity + 1)}
+                                            className="px-3 py-1 hover:bg-gray-100"
+                                            aria-label={`Increase quantity of ${item.name}`}
+                                        >
+                                            +
+                                        </button>
                                     </div>
-                                    <button onClick={() => removeFromCart(item._id)} className="text-red-500 hover:text-red-600">
+                                    <button
+                                        onClick={() => removeFromCart(item._id)}
+                                        className="text-red-500 hover:text-red-600"
+                                        aria-label={`Remove ${item.name} from cart`}
+                                    >
                                         <i className="fas fa-trash"></i>
                                     </button>
                                 </div>
                             </div>
                         ))}
                         <div>
-                            <button onClick={clearCart} className="bg-gray-100 px-4 py-2 rounded">Clear Cart</button>
+                            <button
+                                onClick={clearCart}
+                                className="bg-gray-100 px-4 py-2 rounded hover:bg-gray-200"
+                                aria-label="Clear all items from cart"
+                            >
+                                Clear Cart
+                            </button>
                         </div>
                     </div>
 
@@ -64,7 +85,9 @@ const CartPage = () => {
                             <span>Total</span>
                             <span>KES {total.toLocaleString()}</span>
                         </div>
-                        <Link to="/checkout" className="block text-center bg-primary text-white px-4 py-2 rounded">Proceed to Checkout</Link>
+                        <Link to="/checkout" className="block text-center bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark transition">
+                            Proceed to Checkout
+                        </Link>
                     </div>
                 </div>
             </div>
