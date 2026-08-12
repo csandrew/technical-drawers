@@ -20,13 +20,13 @@ const DrawingKitGuide = () => {
             </div>
 
             <ul className="list-disc pl-6 space-y-3 text-gray-600">
-                <li><strong>1 Large Compass</strong> — For drawing circles and arcs with precision</li>
-                <li><strong>Divider</strong> — Transfer measurements accurately between drawings</li>
-                <li><strong>Extension Bar</strong> — Extends your compass for larger circles</li>
-                <li><strong>Pencil Holder</strong> — Securely holds graphite leads for clean lines</li>
-                <li><strong>Clutch Pencil (0.5mm)</strong> — Precision pencil for fine technical lines</li>
-                <li><strong>Leads Box</strong> — Various graphite grades for different drawing needs</li>
-                <li><strong>Lead Sharpener</strong> — Keeps your leads perfectly sharpened</li>
+                <li><strong>1 Large Compass</strong> - For drawing circles and arcs with precision</li>
+                <li><strong>Divider</strong> - Transfer measurements accurately between drawings</li>
+                <li><strong>Extension Bar</strong> - Extends your compass for larger circles</li>
+                <li><strong>Pencil Holder</strong> - Securely holds graphite leads for clean lines</li>
+                <li><strong>Clutch Pencil (0.5mm)</strong> - Precision pencil for fine technical lines</li>
+                <li><strong>Leads Box</strong> - Various graphite grades for different drawing needs</li>
+                <li><strong>Lead Sharpener</strong> - Keeps your leads perfectly sharpened</li>
             </ul>
 
             <h3 className="text-xl font-bold text-primary mt-8 mb-3">Who Uses This?</h3>
@@ -49,7 +49,7 @@ const DrawingKitGuide = () => {
 
             <div className="text-center mt-8">
                 <a 
-                    href="https://wa.me/254700000000?text=Hello%20Technical%20Drawers%2C%20I%20want%20to%20inquire%20about%20the%20Technical%20Drawing%20Set" 
+                    href="https://wa.me/254795011225?text=Hello%20Technical%20Drawers%2C%20I%20want%20to%20inquire%20about%20the%20Technical%20Drawing%20Set" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="btn btn-whatsapp inline-flex"

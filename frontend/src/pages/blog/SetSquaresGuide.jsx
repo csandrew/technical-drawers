@@ -24,8 +24,8 @@ const SetSquaresGuide = () => {
 
             <h2 className="text-2xl font-bold text-primary mt-8 mb-4">What's Included</h2>
             <ul className="list-disc pl-6 space-y-2 text-gray-600">
-                <li><strong>30°/60°/90° Triangle</strong> — For precise angles</li>
-                <li><strong>45°/45°/90° Triangle</strong> — For precise 45° and 90° angles</li>
+                <li><strong>30°/60°/90° Triangle</strong> - For precise angles</li>
+                <li><strong>45°/45°/90° Triangle</strong> - For precise 45° and 90° angles</li>
             </ul>
 
             <div className="bg-primary/5 border-l-4 border-primary p-4 mt-8">
@@ -39,7 +39,7 @@ const SetSquaresGuide = () => {
 
             <div className="text-center mt-8">
                 <a 
-                    href="https://wa.me/254700000000?text=Hello%20Technical%20Drawers%2C%20I%20want%20to%20inquire%20about%20the%20Set%20Squares" 
+                    href="https://wa.me/254795011225?text=Hello%20Technical%20Drawers%2C%20I%20want%20to%20inquire%20about%20the%20Set%20Squares" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="btn btn-whatsapp inline-flex"

@@ -35,13 +35,13 @@ const UrbanPlanning = () => {
                     <i className="fas fa-lightbulb text-accent mr-2"></i> Pro Tip
                 </p>
                 <p className="text-gray-600">
-                    Learn to work with both metric and architectural scales — you'll need both in urban planning.
+                    Learn to work with both metric and architectural scales - you'll need both in urban planning.
                 </p>
             </div>
 
             <div className="text-center mt-8">
                 <a 
-                    href="https://wa.me/254700000000?text=Hello%20Technical%20Drawers%2C%20I%20need%20help%20choosing%20urban%20planning%20tools" 
+                    href="https://wa.me/254795011225?text=Hello%20Technical%20Drawers%2C%20I%20need%20help%20choosing%20urban%20planning%20tools" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="btn btn-whatsapp inline-flex"

@@ -6,7 +6,7 @@ const Footer = () => {
         <footer className="bg-primary text-white py-12">
             <div className="container mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-[auto_auto_auto] gap-8 md:gap-12">
-                    
+
                     {/* Brand */}
                     <div className="w-auto">
                         <div className="flex items-center gap-3 mb-4">
@@ -18,7 +18,7 @@ const Footer = () => {
                         <p className="text-gray-400 text-sm max-w-xs">
                             Equipping Kenya's next generation of STEM professionals.
                         </p>
-                        
+
                         {/* Social Media Icons */}
                         <div className="flex items-center gap-3 mt-5">
                             <a
@@ -41,14 +41,7 @@ const Footer = () => {
                             >
                                 <i className="fab fa-facebook-f text-white text-sm"></i>
                             </a>
-                            <a
-                                href="#"
-                                aria-label="TikTok"
-                                className="w-10 h-10 rounded-full flex items-center justify-center transition-transform hover:scale-110"
-                                style={{ background: '#000000' }}
-                            >
-                                <i className="fab fa-tiktok text-white text-sm"></i>
-                            </a>
+
                         </div>
                     </div>
 
@@ -60,7 +53,7 @@ const Footer = () => {
                             <li><Link to="/products" className="text-gray-400 hover:text-accent transition">Products</Link></li>
                             <li><Link to="/blog" className="text-gray-400 hover:text-accent transition">Our Blog</Link></li>
                             <li><Link to="/about" className="text-gray-400 hover:text-accent transition">About Us</Link></li>
-                            <li><Link to="/contact" className="text-gray-400 hover:text-accent transition">Contact Us</Link></li>
+            
                         </ul>
                     </div>
 
@@ -81,9 +74,12 @@ const Footer = () => {
                                 <a href="tel:+254795011225" className="hover:text-accent transition">+254 795 011 225</a>
                             </li>
                         </ul>
+
+
                     </div>
 
-                    
+
+
                 </div>
 
                 {/* Bottom */}

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link, useSearchParams } from 'react-router-dom';
@@ -36,10 +35,10 @@ const Products = () => {
         return categories.slice(0, 6);
     };
 
-    const categoryTitle = categoryFilter !== 'All' ? `${categoryFilter} | Technical Drawers` : 'All Products | Technical Drawers';
+    const categoryTitle = categoryFilter !== 'All' ? `${categoryFilter} | Technical Drawers Nairobi` : 'All Products | Technical Drawers Nairobi';
     const categoryDescription = categoryFilter !== 'All' 
-        ? `Shop our ${categoryFilter} collection. Quality engineering equipment for STEM students in Kenya.` 
-        : 'Browse our complete collection of engineering equipment, calculators, drawing tools, safety gear, and stationery for STEM students.';
+        ? `Shop our ${categoryFilter} collection in Nairobi. Quality engineering equipment for STEM students in Kenya.` 
+        : 'Browse our complete collection of engineering equipment, calculators, drawing tools, safety gear, and stationery for STEM students in Nairobi.';
 
     useEffect(() => {
         const loadProducts = async () => {

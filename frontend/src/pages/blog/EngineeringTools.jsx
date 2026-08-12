@@ -42,7 +42,7 @@ const EngineeringTools = () => {
 
             <div className="text-center mt-8">
                 <a 
-                    href="https://wa.me/254700000000?text=Hello%20Technical%20Drawers%2C%20I%20need%20help%20choosing%20engineering%20tools" 
+                    href="https://wa.me/254795011225?text=Hello%20Technical%20Drawers%2C%20I%20need%20help%20choosing%20engineering%20tools" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="btn btn-whatsapp inline-flex"

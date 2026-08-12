@@ -32,7 +32,7 @@ const LabCoatGuide = () => {
 
             <div className="text-center mt-8">
                 <a 
-                    href="https://wa.me/254700000000?text=Hello%20Technical%20Drawers%2C%20I%20need%20help%20choosing%20a%20lab%20coat%20size" 
+                    href="https://wa.me/254795011225?text=Hello%20Technical%20Drawers%2C%20I%20need%20help%20choosing%20a%20lab%20coat%20size" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="btn btn-whatsapp inline-flex"

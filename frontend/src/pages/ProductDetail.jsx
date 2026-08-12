@@ -48,8 +48,8 @@ const ProductDetail = () => {
         );
     }
 
-    const productTitle = `${product.name} — Technical Drawers`;
-    const productDescription = product.description?.slice(0, 160) || `Shop ${product.name} at Technical Drawers. Quality engineering equipment for STEM students.`;
+    const productTitle = `${product.name} | Technical Drawers Nairobi`;
+    const productDescription = product.description?.slice(0, 160) || `Shop ${product.name} at Technical Drawers in Nairobi. Quality engineering equipment for STEM students.`;
 
     return (
         <>
@@ -68,6 +68,21 @@ const ProductDetail = () => {
                 <meta name="twitter:title" content={productTitle} />
                 <meta name="twitter:description" content={productDescription} />
                 <meta name="twitter:image" content={product.images?.[0]} />
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "Product",
+                        "name": product.name,
+                        "description": product.description,
+                        "image": product.images?.[0],
+                        "offers": {
+                            "@type": "Offer",
+                            "price": product.price,
+                            "priceCurrency": "KES",
+                            "availability": product.stock > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock"
+                        }
+                    })}
+                </script>
             </Helmet>
 
             <section className="py-16 bg-slate-50">

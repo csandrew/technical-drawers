@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useForm } from '@formspree/react';
@@ -45,21 +44,21 @@ ${formData.message}`;
     return (
         <>
             <Helmet>
-                <title>Contact Us — Technical Drawers</title>
-                <meta name="description" content="Get in touch with Technical Drawers. Visit our shop in Nairobi CBD, call us, or send a WhatsApp message. We're here to help with your equipment needs." />
+                <title>Technical Drawers | Essential Engineering & STEM Equipments for Students, Schools & Institutions in Kenya</title>
+                <meta name="description" content="Get in touch with Technical Drawers. Visit our shop inside Technical University of Kenya in Nairobi CBD, call us, or send a WhatsApp message. We're here to help with your equipment needs." />
                 <link rel="canonical" href="https://technicaldrawers.co.ke/contact" />
-                <meta property="og:title" content="Contact Us — Technical Drawers" />
-                <meta property="og:description" content="Contact Technical Drawers — visit our shop in Nairobi CBD, call, or WhatsApp. We're here to help." />
+                <meta property="og:title" content="Technical Drawers | Essential Engineering & STEM Equipments for Students, Schools & Institutions in Kenya" />
+                <meta property="og:description" content="Contact Technical Drawers - visit our shop in Nairobi CBD, call, or WhatsApp. We're here to help." />
                 <meta property="og:url" content="https://technicaldrawers.co.ke/contact" />
-                <meta name="twitter:title" content="Contact Us — Technical Drawers" />
-                <meta name="twitter:description" content="Contact Technical Drawers — visit our shop in Nairobi CBD, call, or WhatsApp." />
+                <meta name="twitter:title" content="Technical Drawers | Essential Engineering & STEM Equipments for Students, Schools & Institutions in Kenya" />
+                <meta name="twitter:description" content="Contact Technical Drawers - visit our shop in Nairobi CBD, call, or WhatsApp." />
             </Helmet>
 
             <section className="py-12 bg-slate-100">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-6">
                         <h1 className="text-2xl font-extrabold text-secondary mb-4">Contact Us</h1>
-                        <p className="text-sm text-gray-600">We're actually helpful. Have a question? Talk to us.</p>
+                        <p className="text-sm text-gray-600">Have a question, comment or an inquiry? Find us through:</p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 rounded shadow">
@@ -68,30 +67,25 @@ ${formData.message}`;
                                 <i className="fas fa-map-marker-alt text-2xl" />
                                 <div>
                                     <h4 className="font-medium">Visit Our Shop</h4>
-                                    <p className="text-sm text-gray-600">Haile Selassie Avenue, Nairobi CBD</p>
+                                    <p className="text-sm text-gray-600">Haile Selassie Avenue, Nairobi Ave</p>
                                 </div>
                             </div>
                             <div className="flex items-start gap-3 p-4 bg-white rounded shadow">
                                 <i className="fas fa-phone-alt text-2xl" />
                                 <div>
                                     <h4 className="font-medium">Call Us</h4>
-                                    <p className="text-sm text-gray-600">+254 795 011 225</p>
+                                    <a href="tel:+254795011225" className="hover:text-accent transition">+254 795 011 225</a>
+                                    
                                 </div>
                             </div>
                             <div className="flex items-start gap-3 p-4 bg-white rounded shadow">
                                 <i className="fas fa-envelope text-2xl" />
                                 <div>
                                     <h4 className="font-medium">Email Us</h4>
-                                    <p className="text-sm text-gray-600">drawerstechnical@gmail.com</p>
+                                    <a href="mailto:drawerstechnical@gmail.com" className="hover:text-accent transition">drawerstechnical@gmail.com</a>
                                 </div>
                             </div>
-                            <div className="flex items-start gap-3 p-4 bg-white rounded shadow">
-                                <i className="fab fa-whatsapp text-2xl" />
-                                <div>
-                                    <h4 className="font-medium">WhatsApp</h4>
-                                    <p className="text-sm text-gray-600">+254 795 011 225</p>
-                                </div>
-                            </div>
+                            
                         </div>
 
                         <form className="md:col-span-2 bg-white p-6 rounded shadow" onSubmit={handleFormSubmit}>

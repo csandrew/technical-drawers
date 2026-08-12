@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
@@ -88,14 +87,14 @@ const Home = () => {
     return (
         <>
             <Helmet>
-                <title>Technical Drawers — Engineering Equipment for STEM Students</title>
-                <meta name="description" content="Shop quality engineering drawing sets, calculators, safety equipment, and tools for STEM students in Kenya. Student-friendly prices. Trusted by 10,000+ students." />
+                <title>Technical Drawers | Essential Engineering & STEM Equipments for Students, Schools & Institutions in Kenya</title>
+                <meta name="description" content="Buy technical drawing sets, scientific calculators, and safety equipment for STEM students in Nairobi. Located near Technical University of Kenya. Student-friendly prices, quality gear." />
                 <link rel="canonical" href="https://technicaldrawers.co.ke/" />
-                <meta property="og:title" content="Technical Drawers - Engineering Equipment for STEM Students" />
-                <meta property="og:description" content="Shop quality engineering drawing sets, calculators, safety equipment, and tools for STEM students in Kenya." />
+                <meta property="og:title" content="Technical Drawers | Essential Engineering & STEM Equipments for Students, Schools & Institutions in Kenya" />
+                <meta property="og:description" content="Buy technical drawing sets, scientific calculators, and safety equipment for STEM students in Nairobi. Located near Technical University of Kenya." />
                 <meta property="og:url" content="https://technicaldrawers.co.ke/" />
-                <meta name="twitter:title" content="Technical Drawers - Engineering Equipment for STEM Students" />
-                <meta name="twitter:description" content="Shop quality engineering drawing sets, calculators, safety equipment, and tools for STEM students in Kenya." />
+                <meta name="twitter:title" content="Technical Drawers | Essential Engineering & STEM Equipments for Students, Schools & Institutions in Kenya" />
+                <meta name="twitter:description" content="Buy technical drawing sets, scientific calculators, and safety equipment for STEM students in Nairobi." />
             </Helmet>
 
             {/* Hero Slider Section */}
