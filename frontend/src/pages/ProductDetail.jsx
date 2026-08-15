@@ -124,7 +124,7 @@ const ProductDetail = () => {
 
                             <div className="mt-6">
                                 <span className={`inline-block px-4 py-2 rounded-full text-sm font-semibold ${product.stock > 0 ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
-                                    {product.stock > 0 ? `✅ In Stock (${product.stock} available)` : '❌ Out of Stock'}
+                                    {product.stock > 0 ? `✅ In Stock` : '❌ Out of Stock'}
                                 </span>
                             </div>
 

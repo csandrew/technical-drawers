@@ -105,7 +105,7 @@ const products = [
         price: 1799,
         category: 'Engineering Drawing Equipment',
         images: ['https://res.cloudinary.com/gaovndvn/image/upload/v1785412697/a2-drawing-board-smart_ds5pyf.webp'],
-        stock: 500,
+        stock: 200,
         featured: false,
         tags: ['drawing', 'board'],
         specifications: {
@@ -117,10 +117,10 @@ const products = [
         name: 'Drawing Board (Smart Board)',
         slug: 'drawing-board-smart',
         description: 'Professional A2 smart drawing board with parallel motion.',
-        price: 3499,
+        price: 4500,
         category: 'Engineering Drawing Equipment',
         images: ['https://res.cloudinary.com/gaovndvn/image/upload/v1785412866/drawing-board_czaryd.jpg'],
-        stock: 500,
+        stock: 200,
         featured: true,
         tags: ['drawing', 'board', 'smart'],
         specifications: {
@@ -942,6 +942,12 @@ const products = [
             'Voltage': '3V'
         }
     },
+    
+
+    // ============================================
+    // TEXTBOOKS & REFERENCE
+    // ============================================
+
     {
         name: 'SMP Advanced Tables',
         slug: 'smp-advanced-tables',
@@ -957,10 +963,6 @@ const products = [
             'Includes': 'Trigonometric, Logarithmic Tables'
         }
     },
-
-    // ============================================
-    // TEXTBOOKS & REFERENCE
-    // ============================================
     {
         name: 'Engineering Mathematics — K.A. Stroud',
         slug: 'engineering-mathematics-stroud',

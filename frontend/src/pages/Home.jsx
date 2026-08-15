@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
@@ -9,7 +10,52 @@ const Home = () => {
     const [featuredProducts, setFeaturedProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [activeSlide, setActiveSlide] = useState(0);
+    const [brandIndex, setBrandIndex] = useState(0);
     const { addToCart } = useCart();
+
+    // Categories data - Must match database EXACTLY
+    const categories = [
+        { name: 'Scientific Calculators', icon: 'fa-calculator' },
+        { name: 'Engineering Drawing Equipment', icon: 'fa-drafting-compass' },
+        { name: 'Measuring Instruments', icon: 'fa-ruler-combined' },
+        { name: 'Hand Tools', icon: 'fa-tools' },
+        { name: 'Electrical Tools', icon: 'fa-bolt' },
+        { name: 'Safety Equipment', icon: 'fa-shield-alt' },
+        { name: 'Stationery & Office Supplies', icon: 'fa-pencil-alt' },
+        { name: 'Art & Drafting Supplies', icon: 'fa-paint-brush' },
+        { name: 'Textbooks & Reference', icon: 'fa-book' },
+    ];
+
+    const brands = [
+        { name: 'CASIO', logo: 'https://res.cloudinary.com/gaovndvn/image/upload/v1786812256/casio_lvcshg.png' },
+        { name: 'OXFORD', logo: 'https://res.cloudinary.com/gaovndvn/image/upload/v1786812256/helix-oxford_yaadjy.jpg' },
+        { name: 'NATARAJ', logo: 'https://res.cloudinary.com/gaovndvn/image/upload/v1786812256/nataraj_izh2i9.jpg' },
+        { name: 'BIC', logo: 'https://res.cloudinary.com/gaovndvn/image/upload/v1786812256/bic_af8uad.png' },
+        { name: 'ARALDITE', logo: 'https://res.cloudinary.com/gaovndvn/image/upload/v1786813410/araldite_n6va4o.avif' },
+        { name: 'SanDisk', logo: 'https://res.cloudinary.com/gaovndvn/image/upload/v1786813411/sandisk_qrqp0p.png' },
+        { name: 'ORAIMO', logo: 'https://res.cloudinary.com/gaovndvn/image/upload/v1786813412/oraimo_dymgs9.jpg' },
+        { name: 'WERKEN', logo: 'https://res.cloudinary.com/gaovndvn/image/upload/v1786813413/werken_lmooxa.png' },
+        { name: 'ACE MAMBA', logo: 'https://res.cloudinary.com/gaovndvn/image/upload/v1786813408/ace_ngdttc.png' },
+        { name: 'FABER-CASTELL', logo: 'https://res.cloudinary.com/gaovndvn/image/upload/v1786813406/faber-castell_wfhrdt.png' },
+    ];
+
+    // Auto-slide brands every 4 seconds
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setBrandIndex((prev) => (prev + 1) % brands.length);
+        }, 4000);
+        return () => clearInterval(interval);
+    }, [brands.length]);
+
+    // Get visible brands (5 at a time)
+    const getVisibleBrands = () => {
+        const visible = [];
+        for (let i = 0; i < 5; i++) {
+            const index = (brandIndex + i) % brands.length;
+            visible.push(brands[index]);
+        }
+        return visible;
+    };
 
     const slides = [
         {
@@ -83,6 +129,8 @@ const Home = () => {
             </div>
         );
     }
+
+    const visibleBrands = getVisibleBrands();
 
     return (
         <>
@@ -181,6 +229,32 @@ const Home = () => {
                 </div>
             </section>
 
+            {/* Browse by Category - Must match database */}
+            <section className="py-10 bg-white">
+                <div className="container mx-auto px-4">
+                    <div className="text-center mb-8">
+                        <h2 className="text-xl md:text-2xl font-extrabold text-primary">
+                            Shop by Category
+                        </h2>
+                        <p className="text-text-light text-sm mt-1">Find what you need for your course</p>
+                    </div>
+                    <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-3">
+                        {categories.map((cat) => (
+                            <Link
+                                key={cat.name}
+                                to={`/products?category=${encodeURIComponent(cat.name)}`}
+                                className="bg-slate-100 hover:bg-slate-200 rounded-lg p-3 text-center transition-all hover:scale-105 hover:shadow-sm group"
+                            >
+                                <div className="text-xl text-secondary mb-1">
+                                    <i className={`fas ${cat.icon}`}></i>
+                                </div>
+                                <h3 className="font-medium text-xs text-primary truncate">{cat.name}</h3>
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
             {/* Featured Products */}
             <section className="py-12 md:py-16 bg-slate-200">
                 <div className="container mx-auto px-4">
@@ -204,6 +278,49 @@ const Home = () => {
                         >
                             View All Products <i className="fas fa-arrow-right ml-2"></i>
                         </Link>
+                    </div>
+                </div>
+            </section>
+
+            {/* Trusted Brands - Carousel */}
+            <section className="py-10 bg-white border-t border-gray-100">
+                <div className="container mx-auto px-4">
+                    <div className="text-center mb-6">
+                        <h3 className="text-sm font-bold text-secondary uppercase tracking-wider">Trusted Brands</h3>
+                        <p className="text-xs text-gray-500 mt-1">Quality products from the brands you trust</p>
+                    </div>
+                    
+                    {/* Carousel Container */}
+                    <div className="relative overflow-hidden">
+                        <div className="flex transition-transform duration-500 ease-in-out">
+                            {visibleBrands.map((brand, idx) => (
+                                <div 
+                                    key={`${brand.name}-${idx}`} 
+                                    className="w-1/5 flex-shrink-0 flex items-center justify-center px-4"
+                                >
+                                    <img 
+                                        src={brand.logo} 
+                                        alt={brand.name} 
+                                        className="h-8 md:h-10 w-auto object-contain transition duration-300"
+                                        loading="lazy"
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                        
+                        {/* Dots Navigation */}
+                        <div className="flex justify-center gap-2 mt-4">
+                            {brands.map((_, idx) => (
+                                <button
+                                    key={idx}
+                                    onClick={() => setBrandIndex(idx)}
+                                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                                        idx === brandIndex ? 'bg-secondary w-4' : 'bg-gray-300'
+                                    }`}
+                                    aria-label={`Go to brand ${idx + 1}`}
+                                />
+                            ))}
+                        </div>
                     </div>
                 </div>
             </section>
