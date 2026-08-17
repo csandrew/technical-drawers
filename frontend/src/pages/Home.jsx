@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
@@ -13,30 +12,30 @@ const Home = () => {
     const [brandIndex, setBrandIndex] = useState(0);
     const { addToCart } = useCart();
 
-    // Categories data - Must match database EXACTLY
+    // Categories data - Shorter display names
     const categories = [
-        { name: 'Scientific Calculators', icon: 'fa-calculator' },
-        { name: 'Engineering Drawing Equipment', icon: 'fa-drafting-compass' },
-        { name: 'Measuring Instruments', icon: 'fa-ruler-combined' },
-        { name: 'Hand Tools', icon: 'fa-tools' },
-        { name: 'Electrical Tools', icon: 'fa-bolt' },
-        { name: 'Safety Equipment', icon: 'fa-shield-alt' },
-        { name: 'Stationery & Office Supplies', icon: 'fa-pencil-alt' },
-        { name: 'Art & Drafting Supplies', icon: 'fa-paint-brush' },
-        { name: 'Textbooks & Reference', icon: 'fa-book' },
+        { name: 'Calculators', icon: 'fa-calculator', filter: 'Scientific Calculators' },
+        { name: 'Drawing Equipment', icon: 'fa-drafting-compass', filter: 'Engineering Drawing Equipment' },
+        { name: 'Measuring Tools', icon: 'fa-ruler-combined', filter: 'Measuring Instruments' },
+        { name: 'Hand Tools', icon: 'fa-tools', filter: 'Hand Tools' },
+        { name: 'Electrical Tools', icon: 'fa-bolt', filter: 'Electrical Tools' },
+        { name: 'Safety Gear', icon: 'fa-shield-alt', filter: 'Safety Equipment' },
+        { name: 'Stationery', icon: 'fa-pencil-alt', filter: 'Stationery & Office Supplies' },
+        { name: 'Art Supplies', icon: 'fa-paint-brush', filter: 'Art & Drafting Supplies' },
+        { name: 'Textbooks', icon: 'fa-book', filter: 'Textbooks & Reference' },
     ];
 
     const brands = [
-        { name: 'CASIO', logo: 'https://res.cloudinary.com/gaovndvn/image/upload/v1786812256/casio_lvcshg.png' },
+        { name: 'CASIO', logo: 'https://res.cloudinary.com/gaovndvn/image/upload/v1786967397/casio_azlltw.jpg' },
         { name: 'OXFORD', logo: 'https://res.cloudinary.com/gaovndvn/image/upload/v1786812256/helix-oxford_yaadjy.jpg' },
         { name: 'NATARAJ', logo: 'https://res.cloudinary.com/gaovndvn/image/upload/v1786812256/nataraj_izh2i9.jpg' },
-        { name: 'BIC', logo: 'https://res.cloudinary.com/gaovndvn/image/upload/v1786812256/bic_af8uad.png' },
+        { name: 'BIC', logo: 'https://res.cloudinary.com/gaovndvn/image/upload/v1786967399/bic_gh9gal.jpg' },
         { name: 'ARALDITE', logo: 'https://res.cloudinary.com/gaovndvn/image/upload/v1786813410/araldite_n6va4o.avif' },
-        { name: 'SanDisk', logo: 'https://res.cloudinary.com/gaovndvn/image/upload/v1786813411/sandisk_qrqp0p.png' },
-        { name: 'ORAIMO', logo: 'https://res.cloudinary.com/gaovndvn/image/upload/v1786813412/oraimo_dymgs9.jpg' },
+        { name: 'SanDisk', logo: 'https://res.cloudinary.com/gaovndvn/image/upload/v1786967399/sandisk_fxlycd.jpg' },
+        { name: 'ORAIMO', logo: 'https://res.cloudinary.com/gaovndvn/image/upload/v1786967399/oraimo_aewamb.png' },
         { name: 'WERKEN', logo: 'https://res.cloudinary.com/gaovndvn/image/upload/v1786813413/werken_lmooxa.png' },
-        { name: 'ACE MAMBA', logo: 'https://res.cloudinary.com/gaovndvn/image/upload/v1786813408/ace_ngdttc.png' },
-        { name: 'FABER-CASTELL', logo: 'https://res.cloudinary.com/gaovndvn/image/upload/v1786813406/faber-castell_wfhrdt.png' },
+        { name: 'ACE MAMBA', logo: 'https://res.cloudinary.com/gaovndvn/image/upload/v1786967399/ace-mamba_dqhq2l.png' },
+    
     ];
 
     // Auto-slide brands every 4 seconds
@@ -229,7 +228,7 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* Browse by Category - Must match database */}
+            {/* Browse by Category - Shorter names */}
             <section className="py-10 bg-white">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-8">
@@ -242,7 +241,7 @@ const Home = () => {
                         {categories.map((cat) => (
                             <Link
                                 key={cat.name}
-                                to={`/products?category=${encodeURIComponent(cat.name)}`}
+                                to={`/products?category=${encodeURIComponent(cat.filter)}`}
                                 className="bg-slate-100 hover:bg-slate-200 rounded-lg p-3 text-center transition-all hover:scale-105 hover:shadow-sm group"
                             >
                                 <div className="text-xl text-secondary mb-1">
