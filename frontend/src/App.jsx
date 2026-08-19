@@ -14,6 +14,8 @@ import Checkout from './pages/Checkout';
 import OrderConfirmation from './pages/OrderConfirmation';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import Terms from './pages/Terms';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 
 // Blog Components
 import BlogIndex from './pages/blog';
@@ -41,6 +43,8 @@ function App() {
                         <Route path="/order-confirmation" element={<OrderConfirmation />} />
                         <Route path="/about" element={<About />} />
                         <Route path="/contact" element={<Contact />} />
+                        <Route path="/terms" element={<Terms />} />
+                        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                         
                         {/* Blog Routes */}
                         <Route path="/blog" element={<BlogIndex />} />

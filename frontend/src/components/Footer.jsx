@@ -53,7 +53,7 @@ const Footer = () => {
                             <li><Link to="/products" className="text-gray-400 hover:text-accent transition">Products</Link></li>
                             <li><Link to="/blog" className="text-gray-400 hover:text-accent transition">Our Blog</Link></li>
                             <li><Link to="/about" className="text-gray-400 hover:text-accent transition">About Us</Link></li>
-            
+
                         </ul>
                     </div>
 
@@ -86,8 +86,8 @@ const Footer = () => {
                 <div className="border-t border-white/10 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
                     <p>&copy; 2026 Technical Drawers. All rights reserved.</p>
                     <div className="flex gap-6">
+                        <Link to="/terms" className="hover:text-accent transition">Terms of Service</Link>
                         <Link to="/privacy-policy" className="hover:text-accent transition">Privacy Policy</Link>
-                        <Link to="/terms-conditions" className="hover:text-accent transition">Terms & Conditions</Link>
                     </div>
                 </div>
             </div>
