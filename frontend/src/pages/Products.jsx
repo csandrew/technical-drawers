@@ -15,7 +15,10 @@ const Products = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const productsPerPage = 12;
     const [showAllCategories, setShowAllCategories] = useState(false);
+    
+    // Get filters from URL
     const categoryFilter = searchParams.get('category') || 'All';
+    const searchQuery = searchParams.get('search') || '';  // ← ADD THIS
 
     const categories = [
         'All',
@@ -35,10 +38,17 @@ const Products = () => {
         return categories.slice(0, 6);
     };
 
-    const categoryTitle = categoryFilter !== 'All' ? `${categoryFilter} | Technical Drawers Nairobi` : 'All Products | Technical Drawers Nairobi';
+    const categoryTitle = categoryFilter !== 'All' 
+        ? `${categoryFilter} | Technical Drawers Nairobi` 
+        : searchQuery 
+            ? `Search Results for "${searchQuery}" | Technical Drawers` 
+            : 'All Products | Technical Drawers Nairobi';
+    
     const categoryDescription = categoryFilter !== 'All' 
         ? `Shop our ${categoryFilter} collection in Nairobi. Quality engineering equipment for STEM students in Kenya.` 
-        : 'Browse our complete collection of engineering equipment, calculators, drawing tools, safety gear, and stationery for STEM students in Nairobi.';
+        : searchQuery 
+            ? `Find ${searchQuery} at Technical Drawers. Shop engineering equipment, calculators, drawing tools, and safety gear in Nairobi.` 
+            : 'Browse our complete collection of engineering equipment, calculators, drawing tools, safety gear, and stationery for STEM students in Nairobi.';
 
     useEffect(() => {
         const loadProducts = async () => {
@@ -53,13 +63,26 @@ const Products = () => {
     useEffect(() => {
         applyFilters(allProducts);
         setCurrentPage(1);
-    }, [categoryFilter]);
+    }, [categoryFilter, searchQuery]);  // ← ADD searchQuery dependency
 
     const applyFilters = (products) => {
         let filtered = [...products];
+        
+        // Category filter
         if (categoryFilter && categoryFilter !== 'All') {
             filtered = filtered.filter(p => p.category === categoryFilter);
         }
+        
+        // Search filter - ADD THIS
+        if (searchQuery) {
+            const query = searchQuery.toLowerCase();
+            filtered = filtered.filter(p => 
+                p.name.toLowerCase().includes(query) ||
+                p.description.toLowerCase().includes(query) ||
+                (p.tags && p.tags.some(tag => tag.toLowerCase().includes(query)))
+            );
+        }
+        
         setFilteredProducts(filtered);
     };
 
@@ -105,7 +128,9 @@ const Products = () => {
             <section className="py-8 md:py-12 bg-slate-200">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-8">
-                        <h1 className="text-2xl md:text-2xl font-extrabold text-secondary mb-4">Our Products</h1>
+                        <h1 className="text-2xl md:text-2xl font-extrabold text-secondary mb-4">
+                            {searchQuery ? `Search Results for "${searchQuery}"` : 'Our Products'}
+                        </h1>
                         <p className="text-text-light text-sm md:text-base mt-1">
                             {filteredProducts.length} products found
                         </p>
@@ -144,7 +169,7 @@ const Products = () => {
                         <span className="text-sm text-gray-600">
                             Showing {currentProducts.length} of {filteredProducts.length} products
                         </span>
-                        {categoryFilter !== 'All' && (
+                        {(categoryFilter !== 'All' || searchQuery) && (
                             <button
                                 onClick={() => setSearchParams({})}
                                 className="text-sm text-accent hover:text-accent-hover transition"
@@ -156,7 +181,11 @@ const Products = () => {
 
                     {currentProducts.length === 0 ? (
                         <div className="text-center py-12 bg-white rounded-lg shadow">
-                            <p className="text-gray-600">No products found for this selection.</p>
+                            <p className="text-gray-600">
+                                {searchQuery 
+                                    ? `No products found matching "${searchQuery}".` 
+                                    : 'No products found for this selection.'}
+                            </p>
                             <button
                                 onClick={() => setSearchParams({})}
                                 className="btn btn-primary mt-4 inline-block"
