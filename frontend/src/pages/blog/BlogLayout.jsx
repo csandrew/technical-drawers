@@ -7,7 +7,8 @@ const BlogLayout = ({
     icon, 
     children, 
     readTime = '5 min read',
-    date = 'July 2024'
+    date = 'July 2024',
+    imageUrl
 }) => {
     return (
         <section className="py-16 bg-slate-100">
@@ -41,6 +42,16 @@ const BlogLayout = ({
                 {/* Article Content */}
                 <div className="bg-white rounded-lg shadow-md p-6 md:p-8 prose prose-lg max-w-none">
                     {children}
+                </div>
+
+                {/* Back to Blog Link - Bottom */}
+                <div className="mt-8 text-center">
+                    <Link 
+                        to="/blog" 
+                        className="inline-flex items-center gap-2 text-primary hover:text-secondary transition"
+                    >
+                        <i className="fas fa-arrow-left"></i> Back to all guides
+                    </Link>
                 </div>
             </div>
         </section>
