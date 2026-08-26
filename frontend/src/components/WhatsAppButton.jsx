@@ -9,13 +9,13 @@ const WhatsAppButton = () => {
     return (
         <a
             href={whatsappUrl}
-            className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-whatsapp text-white p-3 rounded-full shadow-lg hover:bg-whatsapp-hover hover:scale-105 transition-all duration-300 group"
+            className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-whatsapp text-white px-4 py-3 rounded-full shadow-lg hover:bg-whatsapp-hover hover:scale-105 transition-all duration-300"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Chat on WhatsApp"
         >
-            <i className="fab fa-whatsapp text-2xl"></i>
-            <span className="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs group-hover:pl-1 transition-all duration-300 font-medium text-sm">
+            <i className="fab fa-whatsapp text-xl"></i>
+            <span className="font-medium text-sm whitespace-nowrap">
                 WhatsApp Us
             </span>
         </a>
