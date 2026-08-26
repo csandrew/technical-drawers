@@ -240,7 +240,7 @@ const Home = () => {
                     Collections
                 </span>
                 <h2 className="text-xl md:text-3xl lg:text-4xl font-bold mt-1 text-gray-800">
-                    Popular picks
+                    Popular Picks
                 </h2>
             </div>
 
