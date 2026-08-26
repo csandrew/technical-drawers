@@ -67,7 +67,7 @@ ${formData.message}`;
                                 <i className="fas fa-map-marker-alt text-2xl" />
                                 <div>
                                     <h4 className="font-medium">Visit Our Shop</h4>
-                                    <p className="text-sm text-gray-600">Haile Selassie Avenue, Nairobi Ave</p>
+                                    <p className="text-sm text-gray-600">Haile Selassie Ave, T.U.K - Shop 10, Nairobi.</p>
                                 </div>
                             </div>
                             <div className="flex items-start gap-3 p-4 bg-white rounded shadow">

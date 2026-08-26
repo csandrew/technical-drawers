@@ -237,10 +237,10 @@ const Home = () => {
             {/* Title - Always left */}
             <div>
                 <span className="text-secondary font-semibold text-xs md:text-sm uppercase tracking-wider">
-                    New Arrivals
+                    Collections
                 </span>
                 <h2 className="text-xl md:text-3xl lg:text-4xl font-bold mt-1 text-gray-800">
-                    Discover Our Collection
+                    Popular picks
                 </h2>
             </div>
 

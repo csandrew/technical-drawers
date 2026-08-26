@@ -63,7 +63,7 @@ const Footer = () => {
                         <ul className="space-y-2">
                             <li className="flex items-center gap-2 text-gray-400">
                                 <i className="fas fa-map-marker-alt text-gray-400"></i>
-                                Haile Selassie Ave, Nairobi
+                                Haile Selassie Ave, T.U.K - Shop 10, Nairobi.
                             </li>
                             <li className="flex items-center gap-2 text-gray-400">
                                 <i className="fas fa-envelope text-gray-400"></i>
