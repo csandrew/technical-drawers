@@ -1,3 +1,4 @@
+// src/data/products.js
 
 import axios from 'axios';
 
@@ -12,6 +13,20 @@ export const fetchProducts = async () => {
         return response.data.data || [];
     } catch (error) {
         console.error('Error fetching products:', error);
+        return [];
+    }
+};
+
+// Add this - it's the same as fetchProducts but with a clearer name for the Home page
+export const fetchAllProducts = async () => {
+    try {
+        const response = await axios.get(`${API_URL}/api/products`);
+        if (Array.isArray(response.data)) {
+            return response.data;
+        }
+        return response.data.data || [];
+    } catch (error) {
+        console.error('Error fetching all products:', error);
         return [];
     }
 };
