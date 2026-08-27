@@ -289,7 +289,7 @@ const Home = () => {
 
             {/* ========== POPULAR PRODUCTS ========== */}
             {/* Uses ALL products, filters by category */}
-            <section className="py-8 md:py-16 bg-slate-200">
+            <section className="py-8 md:py-16 bg-white">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-6 md:mb-8">
                         <span className="text-secondary font-semibold text-xs md:text-sm uppercase tracking-wider">
@@ -357,7 +357,7 @@ const Home = () => {
 
             {/* ========== FEATURED/PREMIUM PRODUCTS ========== */}
             {/* Uses FEATURED products only, shows 4 */}
-            <section className="py-8 md:py-16 bg-white">
+            <section className="py-8 md:py-16 bg-slate-200">
                 <div className="container mx-auto px-4">
                     <div className="text-center max-w-3xl mx-auto mb-6 md:mb-12">
                         <span className="text-secondary font-semibold text-xs md:text-sm uppercase tracking-wider">
@@ -372,7 +372,7 @@ const Home = () => {
                     </div>
 
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
-                        {featuredProducts.slice(0, 4).map((product) => (
+                        {featuredProducts.slice(0, 8).map((product) => (
                             <ProductCard key={product._id} product={product} />
                         ))}
                     </div>
