@@ -30,7 +30,7 @@ const products = [
             'Power': 'Battery Only'
         }
     },
-    
+
     {
         name: 'Casio FX-991EX ClassWiz',
         slug: 'casio-fx-991ex-classwiz',
@@ -39,7 +39,7 @@ const products = [
         category: 'Scientific Calculators',
         images: ['https://res.cloudinary.com/gaovndvn/image/upload/v1785409591/fx-991-ex_itewbq.png'],
         stock: 500,
-        featured: true,
+        featured: false,
         tags: ['calculator', 'classwiz', 'best-seller'],
         specifications: {
             'Model': 'FX-991EX ClassWiz',
@@ -55,7 +55,7 @@ const products = [
         category: 'Scientific Calculators',
         images: ['https://res.cloudinary.com/gaovndvn/image/upload/v1785408750/fx-991-es-plus_kk08zh.png'],
         stock: 500,
-        featured: true,
+        featured: false,
         tags: ['calculator', 'engineering', 'best-seller'],
         specifications: {
             'Model': 'FX-991ES Plus',
@@ -114,6 +114,27 @@ const products = [
             'Material': 'Wood'
         }
     },
+
+    {
+        name: 'French Curve Set',
+        slug: 'french-curve-set',
+        description: 'Professional French curve set for technical drawing and design. Essential for creating smooth curves in engineering and architectural drawings.',
+        price: 350,
+        category: 'Engineering Drawing Equipment',
+        images: ['https://res.cloudinary.com/gaovndvn/image/upload/v1787916455/French-Curve_bdgzdd.jpg'],
+        stock: 500,
+        featured: false,
+        tags: ['french-curve', 'drawing', 'technical', 'design', 'curves'],
+        specifications: {
+            'Material': 'Clear Plastic',
+            'Pieces': '3',
+            'Sizes': 'Small, Medium, Large',
+            'Usage': 'Technical Drawing, Design'
+        }
+    },
+
+
+
     {
         name: 'Drawing Board (Smart Board)',
         slug: 'drawing-board-smart',
@@ -122,7 +143,7 @@ const products = [
         category: 'Engineering Drawing Equipment',
         images: ['https://res.cloudinary.com/gaovndvn/image/upload/v1785412866/drawing-board_czaryd.jpg'],
         stock: 200,
-        featured: true,
+        featured: false,
         tags: ['drawing', 'board', 'smart'],
         specifications: {
             'Size': 'A2',
@@ -137,7 +158,7 @@ const products = [
         category: 'Engineering Drawing Equipment',
         images: ['https://res.cloudinary.com/gaovndvn/image/upload/v1785410818/engineering-drawing-set_tb2nzd.jpg'],
         stock: 500,
-        featured: true,
+        featured: false,
         tags: ['drawing', 'set', 'compass', 'best-seller'],
         specifications: {
             'Pieces': '9',
@@ -152,7 +173,7 @@ const products = [
         category: 'Engineering Drawing Equipment',
         images: ['https://res.cloudinary.com/gaovndvn/image/upload/v1785410745/60cm-t-square_ot2fsr.jpg'],
         stock: 500,
-        featured: true,
+        featured: false,
         tags: ['t-square', 'drawing', 'best-seller'],
         specifications: {
             'Length': '60cm',
@@ -182,7 +203,7 @@ const products = [
         category: 'Engineering Drawing Equipment',
         images: ['https://res.cloudinary.com/gaovndvn/image/upload/v1785412777/standard-set-squares_kq8vua.jpg'],
         stock: 500,
-        featured: true,
+        featured: false,
         tags: ['set-square', 'angles', 'best-seller'],
         specifications: {
             'Angles': '30°/60°/90°, 45°/45°/90°',
@@ -197,7 +218,7 @@ const products = [
         category: 'Engineering Drawing Equipment',
         images: ['https://res.cloudinary.com/gaovndvn/image/upload/v1785413771/digital-vernier-calipers_r3bks5.jpg'],
         stock: 500,
-        featured: true,
+        featured: false,
         tags: ['calipers', 'vernier', 'digital'],
         specifications: {
             'Range': '150mm',
@@ -261,7 +282,7 @@ const products = [
         category: 'Art & Drafting Supplies',
         images: ['https://res.cloudinary.com/gaovndvn/image/upload/v1785413739/cutting-mat_gbamou.jpg'],
         stock: 500,
-        featured: false,
+        featured: true,
         tags: ['cutting', 'mat'],
         specifications: {
             'Size': 'A3',
@@ -291,7 +312,7 @@ const products = [
         category: 'Art & Drafting Supplies',
         images: ['https://res.cloudinary.com/gaovndvn/image/upload/v1785410385/water-colour-tubes-12_ismim1.jpg'],
         stock: 500,
-        featured: false,
+        featured: true,
         tags: ['water-colour', 'paint', 'art'],
         specifications: {
             'Colours': '12',
@@ -353,7 +374,7 @@ const products = [
         category: 'Art & Drafting Supplies',
         images: ['https://res.cloudinary.com/gaovndvn/image/upload/v1785410371/paint-brushes_ertmoz.jpg'],
         stock: 500,
-        featured: false,
+        featured: true,
         tags: ['paint', 'brushes', 'art', 'design'],
         specifications: {
             'Pieces': '6',
@@ -460,6 +481,27 @@ const products = [
             'Material': 'Steel + Wood'
         }
     },
+
+    {
+        name: 'Screw Driver Set (6-Piece)',
+        slug: 'screw-driver-set-6-piece',
+        description: 'Professional 6-piece screwdriver set with various head types. Ideal for engineering, workshop, and electrical work.',
+        price: 1200,
+        category: 'Hand Tools',
+        images: ['https://res.cloudinary.com/gaovndvn/image/upload/v1787916732/Screw-Driver-Set_war1eb.webp'],
+        stock: 500,
+        featured: false,
+        tags: ['screwdriver', 'tools', 'workshop', 'hand-tools', 'set'],
+        specifications: {
+            'Pieces': '6',
+            'Types': 'Phillips, Flathead, Star',
+            'Material': 'Chrome Vanadium Steel',
+            'Handle': 'Ergonomic Rubber Grip',
+            'Sizes': 'Various'
+        }
+    },
+
+
     {
         name: 'Tack Hammer',
         slug: 'tack-hammer',
@@ -468,7 +510,7 @@ const products = [
         category: 'Hand Tools',
         images: ['https://res.cloudinary.com/gaovndvn/image/upload/v1785410602/tack-hammer_qj2teb.jpg'],
         stock: 500,
-        featured: false,
+        featured: true,
         tags: ['hammer', 'tack'],
         specifications: {
             'Weight': '0.5kg',
@@ -516,7 +558,7 @@ const products = [
         category: 'Electrical Tools',
         images: ['https://res.cloudinary.com/gaovndvn/image/upload/v1785410592/cable-stripper_sviur3.jpg'],
         stock: 500,
-        featured: false,
+        featured: true,
         tags: ['cable', 'stripper', 'wire'],
         specifications: {
             'Type': 'Cable Stripper',
@@ -543,6 +585,26 @@ const products = [
             'Sizes': 'M, L, XL'
         }
     },
+
+    {
+        name: 'Dust Mask (Pack of 10)',
+        slug: 'dust-mask-pack-10',
+        description: 'High-quality disposable dust masks for workshop and lab use. Provides effective protection against dust, particles, and airborne contaminants.',
+        price: 250,
+        category: 'Safety Equipment',
+        images: ['https://res.cloudinary.com/gaovndvn/image/upload/v1787916611/Dust-Mask_o1eeqd.webp'],
+        stock: 1000,
+        featured: false,
+        tags: ['dust-mask', 'safety', 'ppe', 'face-mask', 'workshop'],
+        specifications: {
+            'Type': 'Disposable Dust Mask',
+            'Pack Size': '10',
+            'Material': 'Non-woven Fabric',
+            'Filtration': '3-Layer',
+            'Usage': 'Workshop, Lab, Construction'
+        }
+    },
+
     {
         name: 'Navy Blue Dust Coat',
         slug: 'navy-blue-dust-coat',
@@ -567,7 +629,7 @@ const products = [
         category: 'Safety Equipment',
         images: ['https://res.cloudinary.com/gaovndvn/image/upload/v1785374968/white-dust-coat_hwox4o.webp'],
         stock: 500,
-        featured: true,
+        featured: false,
         tags: ['lab', 'coat', 'white'],
         specifications: {
             'Color': 'White',
@@ -598,7 +660,7 @@ const products = [
         category: 'Safety Equipment',
         images: ['https://res.cloudinary.com/gaovndvn/image/upload/v1785375191/ace-mamba-safety-boots_rv6uzh.webp'],
         stock: 500,
-        featured: true,
+        featured: false,
         tags: ['safety', 'boots', 'steel-toe', 'ace'],
         specifications: {
             'Material': 'Leather',
@@ -622,13 +684,32 @@ const products = [
             'Sole': 'Heavy Duty'
         }
     },
+
+    {
+        name: 'Ace Duma Safety Boots',
+        slug: 'ace-duma-safety-boots',
+        description: 'Premium steel-toe safety boots with exceptional durability and comfort. Ideal for demanding workshop and construction environments.',
+        price: 3800,
+        category: 'Safety Equipment',
+        images: ['https://res.cloudinary.com/gaovndvn/image/upload/v1787916577/Ace-Duma-Safety-Boots_e0nntk.jpg'],
+        stock: 500,
+        featured: false,
+        tags: ['safety', 'boots', 'steel-toe', 'ace', 'duma', 'heavy-duty'],
+        specifications: {
+            'Material': 'Premium Leather',
+            'Toe Type': 'Steel',
+            'Sole': 'Anti-slip Heavy Duty',
+            'Closure': 'Lace-up',
+            'Color': 'Black/Brown'
+        }
+    },
     {
         name: 'Knicker Safety Boots',
         slug: 'knicker-safety-boots',
         description: 'Durable steel-toe safety boots with knicker design. Protective and comfortable.',
         price: 2800,
         category: 'Safety Equipment',
-        images: ['https://res.cloudinary.com/gaovndvn/image/upload/v1785412355/safety-boots_hz2ahm.jpg'],
+        images: ['https://res.cloudinary.com/gaovndvn/image/upload/v1785375241/knicker-safety-boots_xihy6p.png'],
         stock: 500,
         featured: false,
         tags: ['safety', 'boots', 'steel-toe', 'knicker'],
@@ -684,6 +765,26 @@ const products = [
         }
     },
 
+    {
+        name: 'Safety Helmet',
+        slug: 'safety-helmet',
+        description: 'Durable industrial safety helmet for workshop, construction, and site work. Provides head protection against impacts and falling objects.',
+        price: 850,
+        category: 'Safety Equipment',
+        images: ['https://res.cloudinary.com/gaovndvn/image/upload/v1787916589/Helmet_nqannh.jpg'],
+        stock: 500,
+        featured: false,
+        tags: ['helmet', 'safety', 'ppe', 'hard-hat', 'construction', 'workshop'],
+        specifications: {
+            'Material': 'High-Density Polyethylene (HDPE)',
+            'Color': 'White/Yellow/Blue',
+            'Size': 'Adjustable (54-62cm)',
+            'Weight': '350g',
+            'Standard': 'EN 397 / ANSI Z89.1',
+            'Features': 'UV Resistant, 6-Point Suspension'
+        }
+    },
+
     // ============================================
     // STATIONERY & OFFICE SUPPLIES
     // ============================================
@@ -702,6 +803,26 @@ const products = [
             'Type': 'Technical Pen'
         }
     },
+
+    {
+        name: 'Whiteboard Marker Ink Refill',
+        slug: 'whiteboard-marker-ink-refill',
+        description: 'High-quality whiteboard marker ink refill for dry-erase markers. Refillable and long-lasting.',
+        price: 150,
+        category: 'Stationery & Office Supplies',
+        images: ['https://res.cloudinary.com/gaovndvn/image/upload/v1787917077/White-Board-Maker-INK_edbdri.jpg'],
+        stock: 500,
+        featured: true,
+        tags: ['whiteboard', 'marker', 'ink', 'refill', 'stationery'],
+        specifications: {
+            'Type': 'Whiteboard Marker Ink',
+            'Format': 'Refill Bottle',
+            'Capacity': '10ml',
+            'Colors': 'Black, Blue, Red, Green',
+            'Usage': 'Refillable Dry-Erase Markers'
+        }
+    },
+
     {
         name: 'Highlighter Set',
         slug: 'highlighter-set',
@@ -943,7 +1064,7 @@ const products = [
             'Voltage': '3V'
         }
     },
-    
+
 
     // ============================================
     // TEXTBOOKS & REFERENCE
@@ -954,10 +1075,10 @@ const products = [
         slug: 'smp-advanced-tables',
         description: 'Essential reference book with advanced mathematical tables.',
         price: 850,
-        category: 'Stationery & Office Supplies',
+        category: 'Textbooks & Reference',
         images: ['https://res.cloudinary.com/gaovndvn/image/upload/v1785413173/smp-advanced-tables_ejv1qj.jpg'],
         stock: 500,
-        featured: false,
+        featured: true,
         tags: ['tables', 'reference'],
         specifications: {
             'Type': 'Reference Book',
@@ -972,7 +1093,7 @@ const products = [
         category: 'Textbooks & Reference',
         images: ['https://res.cloudinary.com/gaovndvn/image/upload/v1786968381/stroud_cnzspf.jpg'],
         stock: 100,
-        featured: true,
+        featured: false,
         tags: ['textbook', 'mathematics', 'stroud'],
         specifications: {
             'Author': 'K.A. Stroud',
