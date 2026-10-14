@@ -62,8 +62,8 @@ export const galleryRight = [
 
 // ===== TRUST STRIP BENEFITS =====
 export const benefits = [
-    { id: 'quality',  icon: 'fa-shield-halved', title: 'Genuine Brands',   text: 'Casio, Oxford, Rotring — verified stock.' },
-    { id: 'delivery', icon: 'fa-truck-fast',    title: 'Same-Day Nairobi', text: 'Order before 2 PM, delivered today.' },
-    { id: 'payment',  icon: 'fa-mobile-screen', title: 'M-Pesa Accepted',  text: 'M-Pesa, card, or pay on delivery.' },
+    { id: 'quality',  icon: 'fa-shield-halved', title: 'Trusted Brands',   text: 'Including: Casio, Oxford, Kasuku, ACE...' },
+    { id: 'delivery', icon: 'fa-truck-fast',    title: 'Same-Day Nairobi', text: 'Same-day delivery in Nairobi.' },
+    { id: 'payment',  icon: 'fa-mobile-screen', title: 'M-Pesa Accepted',  text: 'We accept M-Pesa & Cash payments.' },
     { id: 'returns',  icon: 'fa-rotate-left',   title: '7-Day Returns',    text: 'Swap wrong items within a week.' },
 ];

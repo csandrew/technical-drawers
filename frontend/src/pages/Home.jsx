@@ -136,7 +136,7 @@ const CategoryNav = () => (
                 href={whatsappLink('Hello Technical Drawers, I would like a quote for a bulk order. Here is my list:')}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="ml-auto shrink-0 whitespace-nowrap border-l border-white/20 py-3 pl-4 pr-3 text-white transition hover:text-primary md:hidden"
+                className="ml-auto shrink-0 whitespace-nowrap border-l border-white py-3 pl-4 pr-3 text-white transition hover:text-primary md:hidden"
             >
                 Get a quote
             </a>
@@ -171,7 +171,7 @@ const FeaturedGallery = () => {
                             to="/products"
                             className="mt-5 inline-flex w-fit items-center gap-2 text-sm font-semibold text-secondary hover:underline"
                         >
-                            Browse all products →
+                            View All Products
                         </Link>
                     </div>
 
@@ -228,7 +228,7 @@ const FeaturedGallery = () => {
 
 const TrustStrip = () => (
     <section className="relative border-b border-gray-200 bg-gray-50" aria-label="Why shop with us">
-        <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary via-secondary to-accent" />
+        <div className="absolute inset-x-0 top-0 h-1 bg-secondary" />
         <div className={`${CONTAINER} py-6 md:py-8`}>
             <h2 className="mb-5 text-center text-base font-bold text-primary md:mb-6 md:text-lg">
                 Why Students & Professionals Choose Us
@@ -494,7 +494,7 @@ const Home = () => {
             </Helmet>
 
             <h1 className="sr-only">
-                Engineering drawing sets, scientific calculators and safety equipment in Nairobi
+                Engineering drawing sets, scientific calculators and safety equipment for STEM students in Nairobi, Kenya.
             </h1>
 
             <CategoryNav />
