@@ -26,4 +26,5 @@ npm-debug.log*
 # IDE/tool specific
 .eslintcache
 .parcel-cache
-.vite/
+.vite/frontend/*.zip
+*.zip
