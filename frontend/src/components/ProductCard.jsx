@@ -10,28 +10,23 @@ const ProductCard = ({ product }) => {
     };
 
     const getBrand = (name) => {
+        const productName = String(name || '');
         const brands = ['Casio', 'Oxford', 'Classmate', 'Nataraj', 'Bic', 'Araldite', 'SanDisk', 'Oraimo', 'Werken', 'Ace Mamba', 'Soldier', 'Crayola', 'Faber-Castell'];
         for (const brand of brands) {
-            if (name.toUpperCase().includes(brand.toUpperCase())) {
+            if (productName.toUpperCase().includes(brand.toUpperCase())) {
                 return brand;
             }
         }
         return 'Technical Drawers';
     };
 
-    // Calculate discount (you can adjust this logic)
-    const getOriginalPrice = (price) => {
-        // If you have a discount percentage stored in product, use it
-        if (product.discountPercent) {
-            return Math.round(price / (1 - product.discountPercent / 100));
-        }
-        // Example: if price is 3500, original might be 4200 (16% off)
-        // You can set this logic based on your data
-        return product.originalPrice || Math.round(price * 1.15); // Fallback: 15% markup
-    };
-
-    const originalPrice = getOriginalPrice(product.price);
-    const hasDiscount = originalPrice > product.price;
+    const discountPercent = Number(product.discountPercent);
+    const explicitOriginalPrice = Number(product.originalPrice);
+    const originalPrice = Number.isFinite(explicitOriginalPrice) && explicitOriginalPrice > product.price
+        ? explicitOriginalPrice
+        : discountPercent > 0 && discountPercent < 100
+            ? Math.round(product.price / (1 - discountPercent / 100))
+            : null;
 
     return (
         <div className="bg-white rounded-lg shadow hover:shadow-md transition-all hover:-translate-y-1 overflow-hidden group">
@@ -40,8 +35,8 @@ const ProductCard = ({ product }) => {
                 <div className="aspect-square bg-gray-100 overflow-hidden">
                     <img 
                         src={product.images?.[0] || '/placeholder.jpg'} 
-                        alt={product.name} 
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        alt={product.name || 'Product'}
+                        className="w-full h-full object-contain p-3 group-hover:scale-105 transition-transform duration-300"
                         loading="lazy"
                     />
                 </div>
@@ -61,18 +56,12 @@ const ProductCard = ({ product }) => {
                     </h3>
                 </Link>
                 
-                {/* Rating */}
-                <div className="flex items-center gap-1 mt-1">
-                    <span className="text-yellow-400 text-[11px] tracking-tight">★★★★★</span>
-                    <span className="text-[10px] text-gray-500">4.8 (126)</span>
-                </div>
-                
                 {/* Price with Original Price crossed out */}
                 <div className="flex items-center gap-2 mt-1">
                     <p className="font-bold text-primary text-sm">
                         KES {product.price.toLocaleString()}
                     </p>
-                    {hasDiscount && (
+                    {originalPrice && (
                         <p className="font-semibold text-red-500 text-[10px] line-through">
                             KES {originalPrice.toLocaleString()}
                         </p>

@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
-import axios from 'axios';
+import { api } from '../utils/api';
 import toast from 'react-hot-toast';
 
 const Checkout = () => {
     const navigate = useNavigate();
     const { cart, total, totalItems, clearCart } = useCart();
     const [loading, setLoading] = useState(false);
+    const pollIntervalRef = useRef(null);
+    const pollTimeoutRef = useRef(null);
+    const pollingActiveRef = useRef(false);
+    const pollingRequestRef = useRef(false);
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -22,6 +26,20 @@ const Checkout = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
+    const stopPaymentPolling = () => {
+        pollingActiveRef.current = false;
+        if (pollIntervalRef.current) {
+            clearInterval(pollIntervalRef.current);
+            pollIntervalRef.current = null;
+        }
+        if (pollTimeoutRef.current) {
+            clearTimeout(pollTimeoutRef.current);
+            pollTimeoutRef.current = null;
+        }
+    };
+
+    useEffect(() => () => stopPaymentPolling(), []);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         
@@ -33,16 +51,13 @@ const Checkout = () => {
         setLoading(true);
 
         try {
-            const token = localStorage.getItem('token');
-            const headers = token ? { Authorization: `Bearer ${token}` } : {};
-
             const orderData = {
                 items: cart.map(item => ({
                     productId: item._id,
                     name: item.name,
                     price: item.price,
                     quantity: item.quantity,
-                    image: item.images[0]
+                    image: item.images?.[0] || ''
                 })),
                 totalAmount: total,
                 shippingAddress: {
@@ -59,65 +74,74 @@ const Checkout = () => {
                 }
             };
 
-            const orderResponse = await axios.post('/api/orders', orderData, { headers });
-            const order = orderResponse.data;
+            const orderResponse = await api.post('/api/orders/guest', orderData);
+            const { order, accessToken } = orderResponse.data.data;
+            sessionStorage.setItem(`guest-order-${order._id}`, accessToken);
+            const headers = { 'X-Order-Access-Token': accessToken };
 
             // If Cash on Delivery, skip M-Pesa
             if (formData.paymentMethod === 'cash') {
                 toast.success('Order placed! We\'ll deliver and collect payment.');
                 clearCart();
-                navigate('/order-confirmation', { state: { orderId: order._id } });
+                navigate(`/order-confirmation/${order._id}`);
                 setLoading(false);
                 return;
             }
 
             // Initiate M-Pesa payment
-            const paymentResponse = await axios.post(
-                '/api/mpesa/stk-push',
+            const paymentResponse = await api.post(
+                '/api/mpesa/guest/stkpush',
                 {
                     orderId: order._id,
                     phoneNumber: formData.phone,
-                    amount: total
+                    amount: order.totalAmount
                 },
                 { headers }
             );
 
             if (paymentResponse.data.success) {
                 toast.success('M-Pesa STK Push sent! Check your phone.');
-                
-                const pollInterval = setInterval(async () => {
+                pollingActiveRef.current = true;
+                pollIntervalRef.current = setInterval(async () => {
+                    if (!pollingActiveRef.current || pollingRequestRef.current) return;
+                    pollingRequestRef.current = true;
                     try {
-                        const statusResponse = await axios.get(
-                            `/api/mpesa/status/${order._id}`,
+                        const statusResponse = await api.get(
+                            `/api/mpesa/guest/order/${order._id}`,
                             { headers }
                         );
+                        if (!pollingActiveRef.current) return;
+                        const paymentStatus = statusResponse.data.data?.paymentStatus;
                         
-                        if (statusResponse.data.paymentStatus === 'paid') {
-                            clearInterval(pollInterval);
+                        if (paymentStatus === 'paid') {
+                            stopPaymentPolling();
                             toast.success('Payment confirmed!');
                             clearCart();
-                            navigate('/order-confirmation', { state: { orderId: order._id } });
-                        } else if (statusResponse.data.paymentStatus === 'failed') {
-                            clearInterval(pollInterval);
+                            navigate(`/order-confirmation/${order._id}`);
+                            setLoading(false);
+                        } else if (paymentStatus === 'failed') {
+                            stopPaymentPolling();
                             toast.error('Payment failed. Please try again.');
                             setLoading(false);
                         }
                     } catch (error) {
                         console.error('Error checking payment status:', error);
+                    } finally {
+                        pollingRequestRef.current = false;
                     }
                 }, 3000);
 
-                setTimeout(() => {
-                    clearInterval(pollInterval);
-                    if (loading) {
-                        toast.error('Payment taking longer than expected. Check your M-Pesa messages.');
-                        setLoading(false);
-                    }
+                pollTimeoutRef.current = setTimeout(() => {
+                    stopPaymentPolling();
+                    toast.error('Payment taking longer than expected. Check your M-Pesa messages.');
+                    setLoading(false);
                 }, 120000);
+            } else {
+                throw new Error(paymentResponse.data.message || 'Unable to initiate M-Pesa payment.');
             }
         } catch (error) {
             console.error('Checkout error:', error);
-            toast.error(error.response?.data?.message || 'Checkout failed. Please try again.');
+            toast.error(error.response?.data?.message || error.message || 'Checkout failed. Please try again.');
             setLoading(false);
         }
     };

@@ -10,10 +10,13 @@ const ProductDetail = () => {
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
     const [quantity, setQuantity] = useState(1);
+    const [selectedImage, setSelectedImage] = useState(0);
     const { addToCart } = useCart();
 
     useEffect(() => {
         const loadProduct = async () => {
+            setLoading(true);
+            setSelectedImage(0);
             const data = await fetchProductById(id);
             setProduct(data);
             setLoading(false);
@@ -48,6 +51,10 @@ const ProductDetail = () => {
         );
     }
 
+    const productImages = Array.isArray(product.images)
+        ? product.images.filter((image) => typeof image === 'string' && image.length > 0)
+        : [];
+    const mainImage = productImages[selectedImage] || productImages[0] || '/placeholder.jpg';
     const productTitle = `${product.name} | Technical Drawers Nairobi`;
     const productDescription = product.description?.slice(0, 160) || `Shop ${product.name} at Technical Drawers in Nairobi. Quality engineering equipment for STEM students.`;
 
@@ -59,7 +66,7 @@ const ProductDetail = () => {
                 <link rel="canonical" href={`https://technicaldrawers.co.ke/product/${product._id}`} />
                 <meta property="og:title" content={productTitle} />
                 <meta property="og:description" content={productDescription} />
-                <meta property="og:image" content={product.images?.[0]} />
+                <meta property="og:image" content={mainImage} />
                 <meta property="og:url" content={`https://technicaldrawers.co.ke/product/${product._id}`} />
                 <meta property="og:type" content="product" />
                 <meta property="product:price:amount" content={product.price} />
@@ -67,14 +74,14 @@ const ProductDetail = () => {
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={productTitle} />
                 <meta name="twitter:description" content={productDescription} />
-                <meta name="twitter:image" content={product.images?.[0]} />
+                <meta name="twitter:image" content={mainImage} />
                 <script type="application/ld+json">
                     {JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "Product",
                         "name": product.name,
                         "description": product.description,
-                        "image": product.images?.[0],
+                        "image": mainImage,
                         "offers": {
                             "@type": "Offer",
                             "price": product.price,
@@ -98,19 +105,29 @@ const ProductDetail = () => {
                     <div className="grid md:grid-cols-2 gap-12 bg-white rounded-custom p-6 md:p-12 shadow-custom">
                         <div>
                             <img
-                                src={product.images[0]}
+                                src={mainImage}
                                 alt={product.name}
-                                className="w-full rounded-lg object-cover aspect-square"
+                                className="w-full rounded-lg object-contain aspect-square bg-gray-50 p-4"
                             />
-                            {product.images.length > 1 && (
+                            {productImages.length > 1 && (
                                 <div className="flex gap-2 mt-3">
-                                    {product.images.map((img, i) => (
-                                        <img
-                                            key={i}
-                                            src={img}
-                                            alt={`${product.name} ${i + 1}`}
-                                            className="w-16 h-16 rounded-lg object-cover cursor-pointer hover:opacity-80 border-2 border-transparent hover:border-accent transition"
-                                        />
+                                    {productImages.map((img, i) => (
+                                        <button
+                                            key={`${img}-${i}`}
+                                            type="button"
+                                            onClick={() => setSelectedImage(i)}
+                                            aria-label={`Show image ${i + 1} of ${product.name}`}
+                                            aria-pressed={selectedImage === i}
+                                            className={`rounded-lg border-2 transition ${
+                                                selectedImage === i ? 'border-accent' : 'border-transparent hover:border-accent'
+                                            }`}
+                                        >
+                                            <img
+                                                src={img}
+                                                alt=""
+                                                className="h-16 w-16 rounded-md bg-gray-50 object-contain p-1"
+                                            />
+                                        </button>
                                     ))}
                                 </div>
                             )}
@@ -120,7 +137,7 @@ const ProductDetail = () => {
                             <span className="text-accent font-semibold text-sm uppercase tracking-wider">{product.category}</span>
                             <h1 className="text-3xl font-extrabold text-primary mt-2">{product.name}</h1>
                             <p className="text-3xl font-bold text-accent mt-4">KES {product.price.toLocaleString()}</p>
-                            <p className="text-gray-600 mt-4">{product.description}</p>
+                            <p className="text-gray-600 mt-4">{product.description || 'Product details are not available.'}</p>
 
                             <div className="mt-6">
                                 <span className={`inline-block px-4 py-2 rounded-full text-sm font-semibold ${product.stock > 0 ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
@@ -141,6 +158,7 @@ const ProductDetail = () => {
                                     <span className="w-12 text-center font-semibold" aria-label={`Quantity: ${quantity}`}>{quantity}</span>
                                     <button
                                         onClick={() => setQuantity(Math.min(product.stock, quantity + 1))}
+                                        disabled={product.stock <= quantity}
                                         className="w-8 h-8 rounded-full border border-gray-300 hover:border-primary transition flex items-center justify-center"
                                         aria-label="Increase quantity"
                                     >
@@ -153,7 +171,7 @@ const ProductDetail = () => {
                                 <button
                                     className="btn btn-primary flex-1 min-w-[150px]"
                                     onClick={handleAddToCart}
-                                    disabled={product.stock <= 0}
+                                    disabled={product.stock <= 0 || quantity > product.stock}
                                     aria-label={`Add ${product.name} to cart`}
                                 >
                                     <i className="fas fa-shopping-cart"></i> Add to Cart

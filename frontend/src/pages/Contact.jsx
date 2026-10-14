@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useForm } from '@formspree/react';
-import toast from 'react-hot-toast';
 
 const Contact = () => {
-    // Formspree hook - REPLACE WITH YOUR FORM ID
     const [state, handleSubmit] = useForm("maewelwo");
     
     const [formData, setFormData] = useState({
@@ -18,27 +16,15 @@ const Contact = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleFormSubmit = async (e) => {
+    useEffect(() => {
+        if (state.succeeded) {
+            setFormData({ name: '', email: '', subject: '', message: '' });
+        }
+    }, [state.succeeded]);
+
+    const handleFormSubmit = (e) => {
         e.preventDefault();
-        
-        // Send to Formspree
-        await handleSubmit(e);
-        
-        // Send to WhatsApp (keep existing functionality)
-        const whatsappMessage = `Hello Technical Drawers,
-
-Name: ${formData.name}
-Email: ${formData.email}
-Subject: ${formData.subject}
-
-Message:
-${formData.message}`;
-
-        const whatsappUrl = `https://wa.me/254795011225?text=${encodeURIComponent(whatsappMessage)}`;
-        window.open(whatsappUrl, '_blank');
-        toast.success('Message sent! We\'ll get back to you.');
-
-        setFormData({ name: '', email: '', subject: '', message: '' });
+        handleSubmit(e);
     };
 
     return (
@@ -94,7 +80,12 @@ ${formData.message}`;
                             {/* Formspree success message */}
                             {state.succeeded && (
                                 <div className="mb-4 p-3 bg-green-100 text-green-700 rounded">
-                                    ✅ Message sent successfully! We'll get back to you.
+                                    Message sent successfully! We'll get back to you.
+                                </div>
+                            )}
+                            {state.errors && (
+                                <div className="mb-4 p-3 bg-red-100 text-red-700 rounded" role="alert">
+                                    We couldn't send your message. Please try again or contact us by phone or WhatsApp.
                                 </div>
                             )}
                             

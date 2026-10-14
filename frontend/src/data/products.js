@@ -1,12 +1,10 @@
 // src/data/products.js
 
-import axios from 'axios';
-
-const API_URL = import.meta.env.VITE_API_URL || 'https://technical-drawers-backend.onrender.com';
+import { api } from '../utils/api';
 
 export const fetchProducts = async () => {
     try {
-        const response = await axios.get(`${API_URL}/api/products`);
+        const response = await api.get('/api/products');
         if (Array.isArray(response.data)) {
             return response.data;
         }
@@ -20,7 +18,7 @@ export const fetchProducts = async () => {
 // Add this - it's the same as fetchProducts but with a clearer name for the Home page
 export const fetchAllProducts = async () => {
     try {
-        const response = await axios.get(`${API_URL}/api/products`);
+        const response = await api.get('/api/products');
         if (Array.isArray(response.data)) {
             return response.data;
         }
@@ -33,7 +31,7 @@ export const fetchAllProducts = async () => {
 
 export const fetchFeaturedProducts = async () => {
     try {
-        const response = await axios.get(`${API_URL}/api/products/featured`);
+        const response = await api.get('/api/products/featured');
         if (Array.isArray(response.data)) {
             return response.data;
         }
@@ -49,8 +47,8 @@ export const fetchFeaturedProducts = async () => {
 
 export const fetchProductById = async (id) => {
     try {
-        const response = await axios.get(`${API_URL}/api/products/${id}`);
-        return response.data;
+        const response = await api.get(`/api/products/${id}`);
+        return response.data.data ?? response.data;
     } catch (error) {
         console.error('Error fetching product:', error);
         return null;
@@ -59,8 +57,9 @@ export const fetchProductById = async (id) => {
 
 export const getProductsByCategory = async (category) => {
     try {
-        const url = category ? `${API_URL}/api/products?category=${encodeURIComponent(category)}` : `${API_URL}/api/products`;
-        const response = await axios.get(url);
+        const response = await api.get('/api/products', {
+            params: category ? { category } : undefined,
+        });
         if (Array.isArray(response.data)) {
             return response.data;
         }

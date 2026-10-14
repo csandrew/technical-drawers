@@ -77,9 +77,9 @@ const Products = () => {
         if (searchQuery) {
             const query = searchQuery.toLowerCase();
             filtered = filtered.filter(p => 
-                p.name.toLowerCase().includes(query) ||
-                p.description.toLowerCase().includes(query) ||
-                (p.tags && p.tags.some(tag => tag.toLowerCase().includes(query)))
+                String(p.name || '').toLowerCase().includes(query) ||
+                String(p.description || '').toLowerCase().includes(query) ||
+                (Array.isArray(p.tags) && p.tags.some(tag => String(tag).toLowerCase().includes(query)))
             );
         }
         

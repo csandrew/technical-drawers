@@ -9,15 +9,39 @@ export const CartProvider = ({ children }) => {
 
     // Load cart from localStorage on mount
     useEffect(() => {
-        const savedCart = localStorage.getItem('cart');
-        if (savedCart) {
-            setCart(JSON.parse(savedCart));
+        try {
+            const savedCart = localStorage.getItem('cart');
+            if (!savedCart) return;
+
+            const parsedCart = JSON.parse(savedCart);
+            if (!Array.isArray(parsedCart)) {
+                throw new TypeError('Saved cart is not an array');
+            }
+
+            const validCart = parsedCart.filter(item =>
+                item &&
+                typeof item._id === 'string' &&
+                Number.isFinite(item.price) &&
+                item.price >= 0 &&
+                Number.isInteger(item.quantity) &&
+                item.quantity > 0
+            );
+            if (validCart.length !== parsedCart.length) {
+                console.error('Some invalid cart entries were discarded.');
+            }
+            setCart(validCart);
+        } catch (error) {
+            console.error('Unable to restore saved cart:', error);
         }
     }, []);
 
     // Save cart to localStorage
     useEffect(() => {
-        localStorage.setItem('cart', JSON.stringify(cart));
+        try {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        } catch (error) {
+            console.error('Unable to save cart to local storage:', error);
+        }
         calculateTotal();
     }, [cart]);
 

@@ -1,31 +1,53 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, Link } from 'react-router-dom';
-import axios from 'axios';
+import { useLocation, useParams, Link } from 'react-router-dom';
+import { api } from '../utils/api';
 
 const OrderConfirmation = () => {
     const location = useLocation();
+    const { orderId: routeOrderId } = useParams();
     const [order, setOrder] = useState(null);
     const [loading, setLoading] = useState(true);
-    const orderId = location.state?.orderId;
+    const [error, setError] = useState('');
+    const orderId = routeOrderId || location.state?.orderId;
 
     useEffect(() => {
-        if (orderId) {
-            fetchOrder();
-        }
-    }, [orderId]);
+        let isCurrent = true;
 
-    const fetchOrder = async () => {
-        try {
-            const token = localStorage.getItem('token');
-            const headers = token ? { Authorization: `Bearer ${token}` } : {};
-            const response = await axios.get(`/api/orders/${orderId}`, { headers });
-            setOrder(response.data);
-        } catch (error) {
-            console.error('Error fetching order:', error);
-        } finally {
-            setLoading(false);
-        }
-    };
+        const fetchOrder = async () => {
+            if (!orderId) {
+                setError('No order ID was provided.');
+                setLoading(false);
+                return;
+            }
+
+            try {
+                const accessToken = sessionStorage.getItem(`guest-order-${orderId}`);
+                if (!accessToken) {
+                    setError('This order confirmation is only available in the browser session where the order was placed.');
+                    setLoading(false);
+                    return;
+                }
+                const response = await api.get(`/api/orders/guest/${orderId}`, {
+                    headers: { 'X-Order-Access-Token': accessToken }
+                });
+                if (isCurrent) setOrder(response.data.data ?? response.data);
+            } catch (fetchError) {
+                console.error('Error fetching order:', fetchError);
+                if (isCurrent) {
+                    setError(fetchError.response?.data?.message || 'Unable to load this order.');
+                }
+            } finally {
+                if (isCurrent) setLoading(false);
+            }
+        };
+
+        setLoading(true);
+        setError('');
+        fetchOrder();
+        return () => {
+            isCurrent = false;
+        };
+    }, [orderId]);
 
     if (loading) {
         return (
@@ -36,20 +58,34 @@ const OrderConfirmation = () => {
     if (!order) {
         return (
             <div className="py-20 text-center">
-                <h2>Order not found</h2>
+                <h2>{error || 'Order not found'}</h2>
                 <Link to="/" className="inline-flex mt-4 bg-primary text-white px-4 py-2 rounded">Go Home</Link>
             </div>
         );
     }
 
+    const paymentPending = order.paymentMethod === 'mpesa' && order.paymentStatus === 'pending';
+    const paymentFailed = order.paymentMethod === 'mpesa' && order.paymentStatus === 'failed';
+    const heading = paymentPending
+        ? 'Order received — payment pending'
+        : paymentFailed
+            ? 'Payment not completed'
+            : 'Order confirmed';
+
     return (
         <section className="py-12">
             <div className="max-w-3xl mx-auto px-4">
                 <div className="bg-white p-8 rounded shadow text-center">
-                    <i className="fas fa-check-circle text-4xl text-green-500 mx-auto"></i>
-                    <h1 className="text-2xl font-semibold mt-4">Order Confirmed!</h1>
+                    <i className={`fas ${paymentFailed ? 'fa-exclamation-circle text-red-500' : paymentPending ? 'fa-clock text-yellow-500' : 'fa-check-circle text-green-500'} text-4xl mx-auto`}></i>
+                    <h1 className="text-2xl font-semibold mt-4">{heading}</h1>
                     <p className="text-sm text-gray-600 mt-2">Order #{order._id.slice(-6).toUpperCase()}</p>
-                    <p className="mt-4 text-gray-600">Thank you for your order. We'll send you a confirmation message shortly.</p>
+                    <p className="mt-4 text-gray-600">
+                        {paymentFailed
+                            ? 'Your payment was not completed. Please contact us if you need help placing this order.'
+                            : paymentPending
+                                ? 'Your order is saved. Complete the M-Pesa payment prompt to confirm payment.'
+                                : 'Thank you for your order. We will send you a confirmation message shortly.'}
+                    </p>
 
                     <div className="mt-6 text-left">
                         <div className="flex justify-between py-2">

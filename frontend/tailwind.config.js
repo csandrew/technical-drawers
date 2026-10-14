@@ -4,28 +4,34 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+
   theme: {
+    container: {
+      center: true,
+      padding: '1rem',
+      screens: { '2xl': '1280px' },
+    },
+
     extend: {
+      maxWidth: {
+        site: '1280px',
+      },
       colors: {
-        // USA Theme Colors
-        primary: '#3C3B6E',      // USA Blue
+        primary: '#3C3B6E',
         'primary-dark': '#2A2960',
-        secondary: '#B22234',     // USA Red
+        secondary: '#B22234',
         'secondary-hover': '#8A1A28',
-        accent: '#D8A73A',        // Golden
+        accent: '#D8A73A',
         'accent-hover': '#C4962E',
-        
-        // Backgrounds
-        background: '#FFFFFF',    // USA White
-        'section-bg': '#F5F5F5',  // Gray
+
+        background: '#FFFFFF',
+        'section-bg': '#F5F5F5',
         'gray-light': '#F8F8F8',
-        
-        // Text
+
         'body-text': '#333333',
         'text-light': '#666666',
         'text-muted': '#888888',
-        
-        // Social Media Colors (Official)
+
         whatsapp: '#25D366',
         'whatsapp-hover': '#1DA851',
         facebook: '#1877F2',

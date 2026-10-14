@@ -3,6 +3,11 @@ const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const Product = require('./models/Product');
+const mpesaRoutes = require('./routes/mpesaRoutes');
+const orderRoutes = require('./routes/orderRoutes');
+const authRoutes = require('./routes/authRoutes');
+const productRoutes = require('./routes/productRoutes');
+const uploadRoutes = require('./routes/uploadRoutes');
 
 const app = express();
 
@@ -12,14 +17,28 @@ connectDB();
 // ============================================
 // CORS Configuration
 // ============================================
-app.use(cors({
-    origin: true,
+const allowedOrigins = new Set([
+    'https://technicaldrawers.co.ke',
+    'https://www.technicaldrawers.co.ke',
+    'http://localhost:5173',
+    'http://127.0.0.1:5173',
+    ...(process.env.FRONTEND_ORIGINS || '')
+        .split(',')
+        .map((origin) => origin.trim())
+        .filter(Boolean)
+]);
+const corsOptions = {
+    origin(origin, callback) {
+        if (!origin || allowedOrigins.has(origin)) {
+            return callback(null, true);
+        }
+        callback(new Error('Origin is not allowed by CORS'));
+    },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
-}));
-
-app.options('*', cors());
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'X-Order-Access-Token']
+};
+app.use(cors(corsOptions));
 
 // ============================================
 // Middleware
@@ -36,6 +55,10 @@ app.use((req, res, next) => {
 // ============================================
 // Routes
 // ============================================
+
+// M-Pesa payment routes
+app.use('/api/mpesa', mpesaRoutes);
+app.use('/api/orders', orderRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
@@ -83,6 +106,10 @@ app.get('/api/products/:id', async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
+
+app.use('/api/auth', authRoutes);
+app.use('/api/products', productRoutes);
+app.use('/api/upload', uploadRoutes);
 
 // 404 handler
 app.use((req, res) => {
